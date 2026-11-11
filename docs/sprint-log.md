@@ -36,7 +36,7 @@
 
 ### Next actions
 
-1. Request independent Architecture Review using `docs/TPM_REVIEW_REQUEST.md`.
-2. Record review findings and disposition under `docs/reviews/`.
+1. Await the independent Architecture Review requested in [PR #1](https://github.com/LenyLLL/projectDemo/pull/1); Gate 1 is still pending.
+2. Record review findings and an explicit disposition under `docs/reviews/` before advancing any gate.
 3. Resolve or explicitly accept the known limitations before marking later gates ready.
 4. Keep the deployed `main` branch stable; integrate reviewed changes through `develop` and PRs.
