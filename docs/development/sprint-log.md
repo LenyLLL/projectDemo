@@ -61,3 +61,20 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Evidence:** [Actions run 43112498061](https://github.com/LenyLLL/projectDemo/actions/runs/43112498061) completed successfully. The post-setup diagnostic, `npm ci`, and `npm run build` all passed on this revision.
 - **Interpretation:** The PR-head build failure was caused by malformed lockfile content, not by a missing file or incorrect working directory. The valid lockfile is retained with deterministic installation.
 - **Next:** This entry documents the verified revision. Any later commit still requires its own passing PR-head check. Gate 1 and later review gates remain pending independent dated reports.
+
+
+## 2026-11-11 — Senior TPM review and integration of PR #3
+
+- **Status:** Accepted with a non-blocking workflow cleanup follow-up; merged to `develop`.
+- **Reviewed revision:** `bbd2c4d78584680689d450669f84853c880bd34f`.
+- **Build evidence:** [PR-head Actions run 43112729192](https://github.com/LenyLLL/projectDemo/actions/runs/43112729192) passed `npm ci` and `npm run build` on the reviewed revision.
+- **Integration:** PR #3 merged to `develop` at `8116d368a1cc002b8d3a37b3ea4b9d14ddde7bdb`. The reviewer accepted the diagnostic step as non-blocking; optional workflow cleanup remains deferred.
+- **Gate status:** The PR review is not a formal gate report. Architecture, MVP, Functional & Scenario, and Final Interview gates remain pending dated reports.
+
+## 2026-11-11 — Scenario-derived project indicators (PR #4)
+
+- **Status:** [PR #4](https://github.com/LenyLLL/projectDemo/pull/4) is open from `feature/scenario-derived-project-status` to `develop`; latest PR-head build and independent review are pending.
+- **Delivered:** Derive the next incomplete milestone and countdown using the fixed simulation date (11 Nov 2026); derive schedule/overall health and delivery summary from current task, milestone, and active-risk data; exclude closed/resolved risks from open counts; make navigation counts, health panel, and exported status brief follow the selected scenario.
+- **Validation:** Local `npm run build` passed after the app changes. A local Vite preview could not start because binding to `127.0.0.1:5173` failed with `EPERM`; visual browser verification was unavailable. The PR body is the source for the exact current head SHA and the latest Actions result.
+- **Known limits:** Confidence remains an illustrative risk-exposure heuristic; the budget and Gantt are not recalculated from a cost baseline or dependency network. All scenario data remains fictional and browser-local.
+- **Next:** Wait for a passing PR-head build and Senior TPM feedback. Keep all formal review gates pending until dated reports for their exact source commits are recorded.
