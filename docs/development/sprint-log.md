@@ -53,3 +53,11 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Root cause:** Node could not parse the checked-in lockfile because its first line was literal `Warning: truncated output (original token count: 14610)` text. The bad blob was `a9510425946b5d284fa13950e262a4a3ed74aa79`. The directory was not the cause.
 - **Correction:** Replace the malformed blob with the validated local lockfile (lockfileVersion 3, 117 package entries, 58,439 bytes); its root dependency map matches `package.json`. Keep `npm ci` and explicit workspace paths.
 - **Status:** Correction is on the updated PR #3 head. Its own build check must pass before integration; no passing result is claimed yet.
+
+
+## 2026-11-11 — PR #3 build passed after lockfile repair
+
+- **Verified revision:** `1efca4a42e2e00fcf005cded6f8da7a8994f0673`.
+- **Evidence:** [Actions run 43112498061](https://github.com/LenyLLL/projectDemo/actions/runs/43112498061) completed successfully. The post-setup diagnostic, `npm ci`, and `npm run build` all passed on this revision.
+- **Interpretation:** The PR-head build failure was caused by malformed lockfile content, not by a missing file or incorrect working directory. The valid lockfile is retained with deterministic installation.
+- **Next:** This entry documents the verified revision. Any later commit still requires its own passing PR-head check. Gate 1 and later review gates remain pending independent dated reports.
