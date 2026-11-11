@@ -17,9 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inspect checked-out npm inputs
+        working-directory: ${{ github.workspace }}
+        run: |
+          printf 'GITHUB_WORKSPACE=%s\nPWD=%s\n' "$GITHUB_WORKSPACE" "$PWD"
+          git rev-parse --show-toplevel
+          ls -l package.json package-lock.json
+          test -f package.json
+          test -f package-lock.json
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
+      - name: Install from checked-in lockfile
+        working-directory: ${{ github.workspace }}
+        run: npm ci
+      - name: Build
+        working-directory: ${{ github.workspace }}
+        run: npm run build

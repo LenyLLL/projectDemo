@@ -19,3 +19,13 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Delivered in this follow-up:** Reconciled governance files with the existing `main` records, retained the initial sprint-log history, consolidated on `docs/development/sprint-log.md`, recorded the main/develop/Pages release path, and clarified that a dated report is required for gate approval.
 - **Evidence:** [Pages run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) is evidence for the deployed baseline commit `452cac9` only. The exact validation for this follow-up is the `Pull request build / build` check on [PR #2](https://github.com/LenyLLL/projectDemo/pull/2); wait for that PR-head check and record its result separately.
 - **Next:** Resolve the PR-head check, request the Senior TPM follow-up review, record any new findings, and keep all four gates pending until their independent dated reports exist.
+
+
+## 2026-11-11 — PR #2 review follow-up and CI diagnosis (PR #3)
+
+- **Status:** PR #2's review feedback is being addressed in [PR #3](https://github.com/LenyLLL/projectDemo/pull/3); PR #3's own build result is pending.
+- **Review source:** PR #2 was reviewed at `32b232f7ebdc78447afd9a30ab7de55767de047b`; see [the review](https://github.com/LenyLLL/projectDemo/pull/2#pullrequestreview-5865985843). Gate 1 and later gates remain pending.
+- **P1 evidence:** Actions run [43109383321](https://github.com/LenyLLL/projectDemo/actions/runs/43109383321) failed at `npm ci` with a missing-lockfile error. The exact merge commit `0f552c5b086589c7cef349f83d038b86de669c32` contains the root lockfile blob `a9510425946b5d284fa13950e262a4a3ed74aa79`, and setup-node reported an npm-cache hit. The run log did not print the working directory or list the checked-out npm files, so the underlying path discrepancy is not yet proven.
+- **P1 action:** PR #3 adds a workspace-input diagnostic and explicitly runs both install and build from `github.workspace`, retaining `npm ci`. Its own Actions result must pass before integration.
+- **P2 disposition:** At the exact reviewed PR #2 SHA, the final paragraph of `docs/requirements.md` already links to `docs/development/sprint-log.md` ([source](https://github.com/LenyLLL/projectDemo/blob/32b232f7ebdc78447afd9a30ab7de55767de047b/docs/requirements.md)). No duplicate edit is needed; this finding is recorded as already satisfied in that source revision.
+- **Next:** Confirm PR #3's check result and send the exact head SHA back to the Senior TPM Reviewer for re-review. Keep every gate pending until its independent dated report exists.
