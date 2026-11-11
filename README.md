@@ -18,7 +18,7 @@ Edits are saved in the browser with `localStorage`; no backend or account is nee
 
 ## Tech stack
 
-- React 18+ with Vite
+- React 19 with Vite
 - Lucide icons
 - CSS responsive layout
 - Browser `localStorage` for persistence
@@ -44,7 +44,7 @@ npm run preview
 
 The workflow in `.github/workflows/deploy.yml` builds the static app and deploys it to GitHub Pages after a push to `main` or a manual workflow run. It sets the Vite base path for the project repository. After the first successful Actions run and Pages configuration, the expected URL is:
 
-`https://lenylll.github.io/robotics-tpm-dashboard/`
+`https://lenylll.github.io/projectDemo/`
 
 In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions** if it is not already enabled. GitHub Actions needs Pages write permission, configured in the workflow.
 
