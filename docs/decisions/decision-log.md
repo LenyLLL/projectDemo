@@ -2,6 +2,12 @@
 
 Record material product, technical, and delivery decisions. Add new entries at the top; retain prior entries.
 
+## 2026-11-11 — Derive delivery indicators from the selected scenario
+
+- **DEC-008 — Keep project status scenario-derived and explain the simulation date.** Use the earliest incomplete milestone and the fixed simulation date of 11 Nov 2026 for the displayed milestone countdown. Derive schedule and overall health from milestone/task status and active risk exposure; exclude closed/resolved risks from active counts. Keep delivery confidence labeled as an illustrative heuristic, and keep the budget context explicitly non-calculated.
+- **Consequences:** Loading or editing a scenario updates the next-milestone KPI, schedule/health indicators, reporting brief, and navigation counts together. These rules describe the demo's status heuristic and do not claim validated forecasting.
+
+
 ## 2026-11-11 — Follow-up decisions from the Architecture Review feedback
 
 - **DEC-007 — Keep a valid checked-in lockfile for deterministic CI.** Run 43112054071 showed the workspace was correct and `npm config get package-lock` returned `true`; Node then found that the tracked `package-lock.json` began with literal warning text from a truncated write. Replace that blob with the validated lockfile that matches the root dependencies and retain `npm ci`.
