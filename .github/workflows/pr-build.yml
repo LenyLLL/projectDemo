@@ -17,14 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect checked-out npm inputs
-        working-directory: ${{ github.workspace }}
+      - name: Diagnose checked-out npm workspace
         run: |
-          printf 'GITHUB_WORKSPACE=%s\nPWD=%s\n' "$GITHUB_WORKSPACE" "$PWD"
-          git rev-parse --show-toplevel
-          ls -l package.json package-lock.json
-          test -f package.json
-          test -f package-lock.json
+          printf 'GITHUB_WORKSPACE=%s\n' "$GITHUB_WORKSPACE"
+          printf 'PWD=%s\n' "$PWD"
+          ls -l "$GITHUB_WORKSPACE/package.json" "$GITHUB_WORKSPACE/package-lock.json"
       - uses: actions/setup-node@v4
         with:
           node-version: 22

@@ -29,3 +29,12 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **P1 action:** PR #3 adds a workspace-input diagnostic and explicitly runs both install and build from `github.workspace`, retaining `npm ci`. Its own Actions result must pass before integration.
 - **P2 disposition:** At the exact reviewed PR #2 SHA, the final paragraph of `docs/requirements.md` already links to `docs/development/sprint-log.md` ([source](https://github.com/LenyLLL/projectDemo/blob/32b232f7ebdc78447afd9a30ab7de55767de047b/docs/requirements.md)). No duplicate edit is needed; this finding is recorded as already satisfied in that source revision.
 - **Next:** Confirm PR #3's check result and send the exact head SHA back to the Senior TPM Reviewer for re-review. Keep every gate pending until its independent dated report exists.
+
+
+## 2026-11-11 — PR #2 CI rerun and PR #3 diagnostic
+
+- **Status:** The exact PR #2 build was rerun and failed again at `npm ci`; PR #3 adds a small diagnostic for its own run.
+- **Repeated failure evidence:** Actions run [43109383321](https://github.com/LenyLLL/projectDemo/actions/runs/43109383321) failed on both attempts. Attempt 2 used job `130826216957` and produced the same missing-lockfile error. This is repeatable on PR #2 and is not treated as a passing or transient check.
+- **PR #3 CI change:** print `GITHUB_WORKSPACE` and `PWD`, list the checked-out package files, then install/build from the explicit workspace while retaining `npm ci`. The new PR-head run must confirm the output and pass before integration.
+- **Review path finding:** reviewer corrected the PR #2 sprint-log finding after confirming that the exact reviewed revision already points to `docs/development/sprint-log.md`; no duplicate path edit was needed.
+- **Next:** inspect PR #3's own logs and check result, then request re-review on its exact head. All review gates remain pending.

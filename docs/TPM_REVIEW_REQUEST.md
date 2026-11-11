@@ -68,7 +68,7 @@ Update this section for each review; keep historical records below it.
 - **Review source:** [PR #2 review comment](https://github.com/LenyLLL/projectDemo/pull/2#pullrequestreview-5865985843).
 - **Exact reviewed commit:** `32b232f7ebdc78447afd9a30ab7de55767de047b`.
 - **Disposition:** COMMENTED. The reviewer stated PR #2 was not ready to merge until the failed build was understood and passed. This is feedback, not a dated gate report or Gate 1 approval.
-- **P1:** Actions run 43109383321 failed at `npm ci` with a missing-lockfile message, although the reviewed merge tree contained the lockfile. PR #3 logs and verifies the workspace inputs and sets an explicit workspace for install/build while retaining `npm ci`.
-- **P2:** The review requested updating the sprint-log link. At the exact reviewed SHA `32b232f7ebdc78447afd9a30ab7de55767de047b`, `docs/requirements.md` already points to `docs/development/sprint-log.md`; this is recorded as already satisfied, with evidence linked above.
+- **P1:** Actions run 43109383321 failed at `npm ci` with a missing-lockfile message, although the reviewed merge tree contained the lockfile. Rerun attempt 2 (job 130826216957) repeated the failure. PR #3 logs `GITHUB_WORKSPACE`, `PWD`, and the checked-out package files, then runs install/build from the explicit workspace while retaining `npm ci`.
+- **P2:** The review requested updating the sprint-log link. At the exact reviewed SHA `32b232f7ebdc78447afd9a30ab7de55767de047b`, `docs/requirements.md` already points to `docs/development/sprint-log.md`. The reviewer later corrected this finding; no duplicate edit was made. See [the correction on PR #2](https://github.com/LenyLLL/projectDemo/pull/2#issuecomment-6808393878).
 - **Gate status:** Gate 1 remains pending a dated independent report against the exact PR #3 head reviewed.
 
