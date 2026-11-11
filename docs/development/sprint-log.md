@@ -45,3 +45,11 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Evidence:** [PR #3 Actions run 43111496023](https://github.com/LenyLLL/projectDemo/actions/runs/43111496023) failed at `npm ci`. Its diagnostic step confirmed `GITHUB_WORKSPACE` contained both npm files before `setup-node`; the install then failed with the same missing-lockfile error despite an explicit workspace.
 - **Next diagnostic:** Move the check after `setup-node`, where it will print the workspace/current directory, list both files, report npm's `package-lock` setting, and parse the lockfile version immediately before install.
 - **Status:** PR #3 has a newer head under review; its own build check must pass before integration. Do not infer a gate result from this failed run.
+
+
+## 2026-11-11 — PR #3 lockfile root cause and correction
+
+- **Evidence:** [PR #3 run 43112054071](https://github.com/LenyLLL/projectDemo/actions/runs/43112054071) ran the post-setup diagnostic. `GITHUB_WORKSPACE` was the repository root, the package files existed, and `npm config get package-lock` returned `true`.
+- **Root cause:** Node could not parse the checked-in lockfile because its first line was literal `Warning: truncated output (original token count: 14610)` text. The bad blob was `a9510425946b5d284fa13950e262a4a3ed74aa79`. The directory was not the cause.
+- **Correction:** Replace the malformed blob with the validated local lockfile (lockfileVersion 3, 117 package entries, 58,439 bytes); its root dependency map matches `package.json`. Keep `npm ci` and explicit workspace paths.
+- **Status:** Correction is on the updated PR #3 head. Its own build check must pass before integration; no passing result is claimed yet.

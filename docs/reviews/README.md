@@ -8,7 +8,7 @@ Each review should identify the exact PR or commit reviewed, summarize the recom
 
 | Gate | Focus | State |
 |---|---|---|
-| 1. Architecture Review | Architecture boundaries, data model, dependencies, project controls, and delivery approach | Pending: PR #1 and PR #2 follow-ups are being addressed in PR #3; independent gate report still required |
+| 1. Architecture Review | Architecture boundaries, data model, dependencies, project controls, and delivery approach | Pending: PR #3 CI must pass and the independent Architecture gate report is still required |
 | 2. MVP Review | Scope coverage, usability, fictional framing, and MVP readiness | Pending |
 | 3. Functional & Scenario Review | Edit flows, calculated indicators, local persistence, scenario loading, and reset behavior | Pending |
 | 4. Final Interview Review | Walkthrough clarity, narrative integrity, portfolio presentation, and release readiness | Pending |

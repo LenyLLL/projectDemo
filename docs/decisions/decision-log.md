@@ -4,6 +4,8 @@ Record material product, technical, and delivery decisions. Add new entries at t
 
 ## 2026-11-11 — Follow-up decisions from the Architecture Review feedback
 
+- **DEC-007 — Keep a valid checked-in lockfile for deterministic CI.** Run 43112054071 showed the workspace was correct and `npm config get package-lock` returned `true`; Node then found that the tracked `package-lock.json` began with literal warning text from a truncated write. Replace that blob with the validated lockfile that matches the root dependencies and retain `npm ci`.
+
 - **DEC-006 — Make CI's npm workspace explicit and inspect its inputs.** After run 43109383321 reported a missing lockfile although the exact merge tree contained it, the PR build will print the runner workspace and verify both npm manifests there before running `npm ci`. The install and build steps will use `github.workspace`; deterministic installation remains in place.
 
 - **DEC-005 — Review feedback is not gate approval.** A GitHub PR review comment, including “Accept with follow-ups,” is actionable feedback only. A gate remains pending until the independent reviewer records a dated report in `docs/reviews/` with the exact commit SHA and explicit disposition.

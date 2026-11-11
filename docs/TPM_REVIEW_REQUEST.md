@@ -10,7 +10,7 @@
 - PR head SHA: the current `head.sha` shown by PR #3 is authoritative; copy that exact 40-character SHA into the dated review report at review start.
 - Scope: consolidate the TPM records already on `main`, preserve PR #1 review history, use one sprint-log path, clarify evidence and gate approval rules.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
-- PR-head validation: [PR #3 Checks](https://github.com/LenyLLL/projectDemo/pull/3/checks). The first run, [43111496023](https://github.com/LenyLLL/projectDemo/actions/runs/43111496023), failed at `npm ci`; the diagnostic showed both npm files before `setup-node`. The latest branch head adds a post-setup-node check before retrying install. The exact current PR head check must pass before integration.
+- PR-head validation: [PR #3 Checks](https://github.com/LenyLLL/projectDemo/pull/3/checks). Run [43111496023](https://github.com/LenyLLL/projectDemo/actions/runs/43111496023) showed the files before setup-node; run [43112054071](https://github.com/LenyLLL/projectDemo/actions/runs/43112054071) showed the workspace and npm config were correct, but the tracked lockfile was invalid JSON because it began with a literal truncation warning. The current branch replaces that file with a validated lockfile. The updated PR head must pass before integration.
 - Baseline-only deployment evidence: [GitHub Actions run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) validates the deployed code baseline `452cac9c6962ce9d0d6a367d61c967c7e6438329`; it does not validate PR #1, PR #2, or PR #3.
 
 ## Context
