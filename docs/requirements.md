@@ -56,26 +56,30 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 
 - **Work package progress:** arithmetic mean of package `progress` percentages in the loaded scenario.
 - **Completed packages:** count of packages whose status is `Done`.
-- **Open risks:** number of risk entries currently held in the risk collection; the current model does not exclude `Closed` entries from this count.
+- **Open risks:** count of risk entries whose status is neither `Closed` nor `Resolved`; closed risks remain in the register history but do not contribute to active exposure.
 - **Risk exposure:** probability multiplied by impact, each represented on a 1–5 scale; high exposure is currently shown at a score of 15 or more.
-- **Delivery confidence:** a lightweight illustrative score derived from average risk exposure. It is a demo heuristic, not a validated forecasting model.
+- **Delivery confidence:** `100 - round(average active risk exposure × 1.2)`, bounded from 40 to 98; with no active risks it is 98. This is an illustrative demo heuristic, not a validated forecast.
+- **Next milestone:** earliest-dated milestone not marked `Complete`; date and countdown are calculated relative to the fixed simulation date, 11 Nov 2026, rather than the viewer's system clock.
+- **Schedule outlook:** `Delayed` when the next incomplete milestone is before the simulation date; `At risk` when any task or milestone is marked at risk; `On track` when an upcoming milestone has no schedule flags; `Complete` when there is no remaining milestone and no schedule flags.
+- **Overall health:** `Delayed` follows a delayed schedule; `At risk` follows schedule flags or an active risk exposure score of 15 or more; otherwise it is `On track` or `Complete`.
 - **Schedule/budget outlook:** example program context used to make the demo reviewable; it is not recalculated from a critical-path or cost baseline model.
 
 ## 6. Acceptance criteria
 
 - **AC-01 — Fictional framing:** the dashboard and README explicitly say the project is fictional and do not imply personal ownership of its delivery.
-- **AC-02 — Project overview:** users can identify project objective, schedule window, approved budget context, delivery health, progress, next milestone, and risk count.
-- **AC-03 — Development plan:** milestone date and status controls update the displayed milestone data and persist after reload.
+- **AC-02 — Project overview:** users can identify project objective, schedule window, approved budget context, calculated delivery health, progress, next incomplete milestone and date, and active risk count. Health and schedule outlook reflect current task, milestone, and risk data.
+- **AC-03 — Development plan:** milestone date and status controls update the displayed milestone data, next-milestone KPI, schedule outlook, and downloaded brief; edits persist after reload.
 - **AC-04 — Work package tracker:** users can search packages, edit status and progress, add a package, and see progress/completion indicators recalculate.
-- **AC-05 — Risk controls:** users can add a risk and edit probability, impact, and status; exposure indicators recalculate.
+- **AC-05 — Risk controls:** users can add a risk and edit probability, impact, and status; active-risk counts exclude `Closed` and `Resolved` entries, and exposure indicators recalculate.
 - **AC-06 — Change control:** users can add a change request and edit change/decision status.
 - **AC-07 — Scenarios:** all three scenarios can be loaded, and reset restores the fictional baseline.
-- **AC-08 — Reporting:** users can download a status brief containing current calculated progress, milestone, risk, and scenario context.
+- **AC-08 — Reporting:** users can download a status brief containing the loaded scenario and simulation date, current calculated health/schedule, confidence heuristic, completion, next milestone/date/status, and active risk counts.
 - **AC-09 — Local-first operation:** core controls work without a backend; edits persist in the current browser only.
 - **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run the GitHub Actions build check; GitHub Pages deploys from `main` only.
 - **AC-11 — Review governance:** each review gate remains pending until an independent written result is recorded in `docs/reviews/`.
 - **AC-12 — Feedback versus approval:** a PR comment, implementation completion, or successful build/deployment is not a gate approval; only the dated report for the exact reviewed SHA can approve a gate.
+- **AC-13 — Live navigation counts:** the work-package badge equals the current package count and the risk badge equals the active risk count in the loaded scenario.
 
 ## 7. Current status
 
-The frontend MVP is implemented and the production build and GitHub Pages deployment have succeeded. Requirements remain open for independent review. The score heuristic, illustrative Gantt bars, and limited editability of names, owners, and impact descriptions are known prototype limits; see `docs/development/sprint-log.md` and the current review request.
+The frontend MVP and the PR #3 CI repair are integrated on `develop`; formal review gates remain pending. The score heuristic, fixed simulation date, illustrative Gantt bars and budget context, and limited editability of names, owners, and impact descriptions are known prototype limits. Scenario-derived status, milestone, risk, and reporting behavior is covered by AC-02, AC-03, AC-05, AC-08, and AC-13; see `docs/development/sprint-log.md` and the current review request.
