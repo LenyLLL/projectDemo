@@ -1,17 +1,16 @@
-# Agile Robots TPM Demo — Senior TPM Review Request
-
 ## Review target
 
 - Repository: [LenyLLL/projectDemo](https://github.com/LenyLLL/projectDemo)
-- Default/release branch: `main`
-- Integration branch: `develop`
-- Current review PR: [#3 — Diagnose and fix the PR-head build workspace](https://github.com/LenyLLL/projectDemo/pull/3)
-- Feature branch: `feature/tpm-review-ci-fix` → `develop`
-- PR head SHA: the current `head.sha` shown by PR #3 is authoritative; copy that exact 40-character SHA into the dated review report at review start.
-- Scope: consolidate the TPM records already on `main`, preserve PR #1 review history, use one sprint-log path, clarify evidence and gate approval rules.
+- Default/release branch: `main`; integration branch: `develop`
+- Current review PR: [#4 — Derive project status KPIs from the active scenario](https://github.com/LenyLLL/projectDemo/pull/4)
+- Feature branch: `feature/scenario-derived-project-status` → `develop`
+- Exact source SHA: see the latest PR #4 body and GitHub `head.sha`; copy that 40-character value into any dated review report before reviewing. The PR body is refreshed after the final documentation commit.
+- Scope: scenario-derived health/schedule indicators, next incomplete milestone/date/countdown, active risk counts, work-package/risk navigation badges, and matching status brief.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
-- PR-head validation: [PR #3 Checks](https://github.com/LenyLLL/projectDemo/pull/3/checks). [Actions run 43112498061](https://github.com/LenyLLL/projectDemo/actions/runs/43112498061) passed `npm ci` and `npm run build` for exact head `1efca4a42e2e00fcf005cded6f8da7a8994f0673` after the lockfile repair. This documentation update moves the branch head, so its new PR-head check must also pass before integration.
-- Baseline-only deployment evidence: [GitHub Actions run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) validates the deployed code baseline `452cac9c6962ce9d0d6a367d61c967c7e6438329`; it does not validate PR #1, PR #2, or PR #3.
+- PR #4 validation: local `npm run build` passed after app changes; local Vite preview was unavailable because binding to `127.0.0.1:5173` failed with `EPERM`; the current exact PR-head Actions check is pending and linked from the PR Checks tab.
+- Release control: `main` requires a pull request and the GitHub Actions `build` check; approvals are disabled. GitHub Pages deploys from `main`; PR #4 targets `develop` and does not itself publish to Pages.
+- Prior integration: PR #3 was reviewed at `bbd2c4d78584680689d450669f84853c880bd34f`, accepted with a non-blocking workflow cleanup follow-up, and merged to `develop` at `8116d368a1cc002b8d3a37b3ea4b9d14ddde7bdb`. Its PR-head build passed in [run 43112729192](https://github.com/LenyLLL/projectDemo/actions/runs/43112729192).
+- Baseline-only deployment evidence: [run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) validates the deployed code baseline `452cac9c6962ce9d0d6a367d61c967c7e6438329`, not the current PR #4 source.
 
 ## Context
 
@@ -41,11 +40,12 @@ A PR review comment is feedback on that revision. It does not approve a review g
 
 Update this section for each review; keep historical records below it.
 
-- **PR / branch:** [PR #3](https://github.com/LenyLLL/projectDemo/pull/3), `feature/tpm-review-ci-fix` → `develop`.
-- **Source revision:** use PR #3's current head SHA at review start; the reviewer must preserve that immutable SHA in the dated report. GitHub PR metadata is the live pointer for the branch head.
-- **Scope changed:** reconciled the governance files already on `main`; retained the existing decision and sprint history; selected `docs/development/sprint-log.md` as the only canonical sprint log; separated PR-head build evidence from the deployed baseline; added workspace diagnostics for CI; clarified that PR feedback is not gate approval.
-- **Known limitations:** the dashboard remains browser-local with no backend; confidence, schedule bars, and budget context are illustrative; only selected fields are editable. See `docs/requirements.md` and the sprint log.
-- **Gate status:** Architecture Review is pending a dated independent report. MVP, Functional & Scenario, and Final Interview gates are also pending.
+- **PR / branch:** [PR #4](https://github.com/LenyLLL/projectDemo/pull/4), `feature/scenario-derived-project-status` → `develop`.
+- **Source revision:** the exact current 40-character PR #4 `head.sha` is recorded in the PR body; the reviewer should copy it into the dated report before review. Any later commit requires refreshing that SHA and re-running the PR-head check.
+- **Scope changed:** made the next incomplete milestone, date/countdown, schedule and overall health, active risk totals, nav badges, health panel, and downloaded status brief derive from the selected scenario and its editable task/milestone/risk records. Added a fixed simulation date of 11 Nov 2026 and documented the illustrative status heuristic.
+- **Validation:** local `npm run build` passed after the app changes; the local Vite preview could not start (`EPERM` binding `127.0.0.1:5173`). Current PR-head build status is in the PR #4 Checks tab; wait for the result on the exact head before integration.
+- **Known limitations:** confidence remains an illustrative risk heuristic; Gantt bars and budget context remain illustrative; some narrative fields remain seed examples; browser-local changes do not sync. See `docs/requirements.md` and `docs/development/sprint-log.md`.
+- **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending dated independent reports. No gate is approved by this PR review or its build result.
 
 ## Historical handoffs and review feedback
 
@@ -72,3 +72,10 @@ Update this section for each review; keep historical records below it.
 - **P2:** The review requested updating the sprint-log link. At the exact reviewed SHA `32b232f7ebdc78447afd9a30ab7de55767de047b`, `docs/requirements.md` already points to `docs/development/sprint-log.md`. The reviewer later corrected this finding; no duplicate edit was made. See [the correction on PR #2](https://github.com/LenyLLL/projectDemo/pull/2#issuecomment-6808393878).
 - **Gate status:** Gate 1 remains pending a dated independent report against the exact PR #3 head reviewed.
 
+
+
+### PR #3 CI and governance follow-up — 2026-11-11
+
+- **Review source:** [PR #3](https://github.com/LenyLLL/projectDemo/pull/3), exact head `bbd2c4d78584680689d450669f84853c880bd34f`.
+- **Disposition:** Senior TPM **Accept with follow-up**; workspace diagnostics were considered non-blocking and cleanup was deferred. This PR review did not approve a formal review gate.
+- **Validation/integration:** [run 43112729192](https://github.com/LenyLLL/projectDemo/actions/runs/43112729192) passed `npm ci` and `npm run build`; PR #3 merged to `develop` at `8116d368a1cc002b8d3a37b3ea4b9d14ddde7bdb`.
