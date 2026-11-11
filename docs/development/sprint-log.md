@@ -78,3 +78,12 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Validation:** Local `npm run build` passed after the app changes. A local Vite preview could not start because binding to `127.0.0.1:5173` failed with `EPERM`; visual browser verification was unavailable. The PR body is the source for the exact current head SHA and the latest Actions result.
 - **Known limits:** Confidence remains an illustrative risk-exposure heuristic; the budget and Gantt are not recalculated from a cost baseline or dependency network. All scenario data remains fictional and browser-local.
 - **Next:** Wait for a passing PR-head build and Senior TPM feedback. Keep all formal review gates pending until dated reports for their exact source commits are recorded.
+
+
+## 2026-11-12 — PR #4 initial PR-head verification
+
+- **Verified revision:** `16a829490aa4f93b12e78b9220c61a56ceb636d1`.
+- **Evidence:** [Actions run 43114964934](https://github.com/LenyLLL/projectDemo/actions/runs/43114964934) passed the required `build` check on that exact PR head.
+- **Review check:** PR #4 had no submitted review or comment at this check; the independent review request was sent with the exact SHA and run link.
+- **Handoff update:** This sprint-log entry itself creates a later documentation commit. Its exact current SHA and check result are maintained in the PR body/Checks tab; the current PR head must pass its own build before integration.
+- **Gate status:** This build and the PR review do not approve a formal gate. All four gates remain pending dated reports.
