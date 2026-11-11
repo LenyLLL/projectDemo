@@ -4,8 +4,9 @@
 **Status:** Awaiting independent Senior TPM review  
 **Developer:** agileRobot_TPM  
 **Repository:** [LenyLLL/projectDemo](https://github.com/LenyLLL/projectDemo)  
-**Review PR:** To be linked after this request is submitted  
+**Review PR:** [#1 — Add TPM requirements and review governance](https://github.com/LenyLLL/projectDemo/pull/1)  
 **Code baseline commit:** `452cac9c6962ce9d0d6a367d61c967c7e6438329`  
+**Initial governance documentation commit:** `254758d6b2cb1e49ecfa2b8275b3881032caf358`  
 **Deployment:** [GitHub Pages demo](https://lenylll.github.io/projectDemo/)  
 **Build/deployment evidence:** [GitHub Actions run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) — success
 
