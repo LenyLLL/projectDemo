@@ -38,3 +38,10 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **PR #3 CI change:** print `GITHUB_WORKSPACE` and `PWD`, list the checked-out package files, then install/build from the explicit workspace while retaining `npm ci`. The new PR-head run must confirm the output and pass before integration.
 - **Review path finding:** reviewer corrected the PR #2 sprint-log finding after confirming that the exact reviewed revision already points to `docs/development/sprint-log.md`; no duplicate path edit was needed.
 - **Next:** inspect PR #3's own logs and check result, then request re-review on its exact head. All review gates remain pending.
+
+
+## 2026-11-11 — PR #3 first CI diagnostic result
+
+- **Evidence:** [PR #3 Actions run 43111496023](https://github.com/LenyLLL/projectDemo/actions/runs/43111496023) failed at `npm ci`. Its diagnostic step confirmed `GITHUB_WORKSPACE` contained both npm files before `setup-node`; the install then failed with the same missing-lockfile error despite an explicit workspace.
+- **Next diagnostic:** Move the check after `setup-node`, where it will print the workspace/current directory, list both files, report npm's `package-lock` setting, and parse the lockfile version immediately before install.
+- **Status:** PR #3 has a newer head under review; its own build check must pass before integration. Do not infer a gate result from this failed run.

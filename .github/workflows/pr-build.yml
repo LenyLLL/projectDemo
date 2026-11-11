@@ -17,15 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Diagnose checked-out npm workspace
-        run: |
-          printf 'GITHUB_WORKSPACE=%s\n' "$GITHUB_WORKSPACE"
-          printf 'PWD=%s\n' "$PWD"
-          ls -l "$GITHUB_WORKSPACE/package.json" "$GITHUB_WORKSPACE/package-lock.json"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+      - name: Diagnose npm workspace after setup-node
+        working-directory: ${{ github.workspace }}
+        run: |
+          printf 'GITHUB_WORKSPACE=%s\n' "$GITHUB_WORKSPACE"
+          printf 'PWD=%s\n' "$PWD"
+          ls -l package.json package-lock.json
+          npm config get package-lock
+          node -e "const p=JSON.parse(require('fs').readFileSync('package-lock.json','utf8')); console.log('lockfileVersion='+p.lockfileVersion)"
       - name: Install from checked-in lockfile
         working-directory: ${{ github.workspace }}
         run: npm ci

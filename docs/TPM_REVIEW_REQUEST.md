@@ -10,7 +10,7 @@
 - PR head SHA: the current `head.sha` shown by PR #3 is authoritative; copy that exact 40-character SHA into the dated review report at review start.
 - Scope: consolidate the TPM records already on `main`, preserve PR #1 review history, use one sprint-log path, clarify evidence and gate approval rules.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
-- PR-head validation: [PR #3 Checks](https://github.com/LenyLLL/projectDemo/pull/3/checks). The `Pull request build / build` check must pass for this exact head before integration.
+- PR-head validation: [PR #3 Checks](https://github.com/LenyLLL/projectDemo/pull/3/checks). The first run, [43111496023](https://github.com/LenyLLL/projectDemo/actions/runs/43111496023), failed at `npm ci`; the diagnostic showed both npm files before `setup-node`. The latest branch head adds a post-setup-node check before retrying install. The exact current PR head check must pass before integration.
 - Baseline-only deployment evidence: [GitHub Actions run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) validates the deployed code baseline `452cac9c6962ce9d0d6a367d61c967c7e6438329`; it does not validate PR #1, PR #2, or PR #3.
 
 ## Context
@@ -68,7 +68,7 @@ Update this section for each review; keep historical records below it.
 - **Review source:** [PR #2 review comment](https://github.com/LenyLLL/projectDemo/pull/2#pullrequestreview-5865985843).
 - **Exact reviewed commit:** `32b232f7ebdc78447afd9a30ab7de55767de047b`.
 - **Disposition:** COMMENTED. The reviewer stated PR #2 was not ready to merge until the failed build was understood and passed. This is feedback, not a dated gate report or Gate 1 approval.
-- **P1:** Actions run 43109383321 failed at `npm ci` with a missing-lockfile message, although the reviewed merge tree contained the lockfile. Rerun attempt 2 (job 130826216957) repeated the failure. PR #3 logs `GITHUB_WORKSPACE`, `PWD`, and the checked-out package files, then runs install/build from the explicit workspace while retaining `npm ci`.
+- **P1:** Actions run 43109383321 failed at `npm ci` with a missing-lockfile message, although the reviewed merge tree contained the lockfile. Rerun attempt 2 (job 130826216957) repeated the failure. PR #3 first logged `GITHUB_WORKSPACE`, `PWD`, and the checked-out package files before setup-node; both files existed, but `npm ci` still failed. Its latest head checks the files and npm lock setting after setup-node, parses the lockfile, then runs install/build from the explicit workspace while retaining `npm ci`.
 - **P2:** The review requested updating the sprint-log link. At the exact reviewed SHA `32b232f7ebdc78447afd9a30ab7de55767de047b`, `docs/requirements.md` already points to `docs/development/sprint-log.md`. The reviewer later corrected this finding; no duplicate edit was made. See [the correction on PR #2](https://github.com/LenyLLL/projectDemo/pull/2#issuecomment-6808393878).
 - **Gate status:** Gate 1 remains pending a dated independent report against the exact PR #3 head reviewed.
 
