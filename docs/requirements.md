@@ -50,7 +50,7 @@ The product goal is to give a TPM one concise operating view for delivery status
 | Risk/issue | ID, title, category, owner, probability, impact, status, mitigation action | Edit probability, impact, and status; derive exposure score; add a risk |
 | Change/decision | ID, type, title, owner, date, status, impact, rationale, decision authority | Edit governance status; add a change request; supplier recovery adds a pending approval record |
 | Project controls | RACI, RAID, verification traceability, supplier readiness seed records | Read-only fictional examples with owners, next actions, targets, and evidence/exit criteria |
-| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, or recovery state; reset to baseline |
+| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, vibration-recovery, or supplier-recovery state; reset to baseline |
 
 All data is fictional and browser-local. A scenario load intentionally replaces the current browser state with that scenario's seed snapshot.
 
@@ -74,7 +74,7 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-04 — Work package tracker:** users can search packages, edit status and progress, add a package, and see progress/completion indicators recalculate.
 - **AC-05 — Risk controls:** users can add a risk and edit probability, impact, and status; active-risk counts exclude `Closed` and `Resolved` entries, and exposure indicators recalculate.
 - **AC-06 — Change control:** users can add a change request and edit change/decision status.
-- **AC-07 — Scenarios:** all three scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
+- **AC-07 — Scenarios:** all four scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
 - **AC-08 — Reporting:** users can download a status brief containing the loaded scenario and simulation date, current calculated health/schedule, confidence heuristic, completion, next milestone/date/status, and active risk counts.
 - **AC-09 — Local-first operation:** core controls work without a backend; task, milestone, risk, change, and selected scenario state persist in the current browser only.
 - **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run the GitHub Actions build check; GitHub Pages deploys from `main` only.
