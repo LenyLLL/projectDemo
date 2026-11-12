@@ -87,3 +87,11 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Review check:** PR #4 had no submitted review or comment at this check; the independent review request was sent with the exact SHA and run link.
 - **Handoff update:** This sprint-log entry itself creates a later documentation commit. Its exact current SHA and check result are maintained in the PR body/Checks tab; the current PR head must pass its own build before integration.
 - **Gate status:** This build and the PR review do not approve a formal gate. All four gates remain pending dated reports.
+
+
+## 2026-11-12 — Senior TPM follow-up on PR #4
+
+- **Reviewed source:** PR #4 head `16a829490aa4f93b12e78b9220c61a56ceb636d1`.
+- **Findings addressed:** Persist the selected scenario label so a reload keeps it aligned with the loaded local data; show `Complete` only when every milestone and work package is done; report unfinished packages with no upcoming milestone as `At risk` and surface the schedule gap.
+- **Validation:** Local `npm run build` passed after these app changes. This follow-up and its documentation move the PR head; the new exact head needs its own passing GitHub Actions build before integration.
+- **Review state:** This feedback is not a formal gate report. Architecture, MVP, Functional & Scenario, and Final Interview gates remain pending.
