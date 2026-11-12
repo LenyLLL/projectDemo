@@ -5,7 +5,7 @@
 - Current review PR: [#4 — Derive project status KPIs from the active scenario](https://github.com/LenyLLL/projectDemo/pull/4)
 - Feature branch: `feature/scenario-derived-project-status` → `develop`
 - Exact source SHA: see the latest PR #4 body and GitHub `head.sha`; copy that 40-character value into any dated review report before reviewing. The PR body is refreshed after the final documentation commit.
-- Scope: scenario-derived health/schedule indicators, next incomplete milestone/date/countdown, active risk counts, work-package/risk navigation badges, and matching status brief.
+- Scope: scenario-derived health/schedule indicators, next incomplete milestone/date/countdown, active risk counts, work-package/risk navigation badges, matching status brief, persisted selected-scenario label, and a guard against reporting completion while work remains.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
 - PR #4 validation: local `npm run build` passed after app changes; local Vite preview was unavailable because binding to `127.0.0.1:5173` failed with `EPERM`; the current exact PR-head Actions check is pending and linked from the PR Checks tab.
 - Release control: `main` requires a pull request and the GitHub Actions `build` check; approvals are disabled. GitHub Pages deploys from `main`; PR #4 targets `develop` and does not itself publish to Pages.
@@ -42,9 +42,9 @@ Update this section for each review; keep historical records below it.
 
 - **PR / branch:** [PR #4](https://github.com/LenyLLL/projectDemo/pull/4), `feature/scenario-derived-project-status` → `develop`.
 - **Source revision:** the exact current 40-character PR #4 `head.sha` is recorded in the PR body; the reviewer should copy it into the dated report before review. Any later commit requires refreshing that SHA and re-running the PR-head check.
-- **Scope changed:** made the next incomplete milestone, date/countdown, schedule and overall health, active risk totals, nav badges, health panel, and downloaded status brief derive from the selected scenario and its editable task/milestone/risk records. Added a fixed simulation date of 11 Nov 2026 and documented the illustrative status heuristic.
-- **Validation:** local `npm run build` passed after the app changes; the local Vite preview could not start (`EPERM` binding `127.0.0.1:5173`). Current PR-head build status is in the PR #4 Checks tab; wait for the result on the exact head before integration.
-- **Known limitations:** confidence remains an illustrative risk heuristic; Gantt bars and budget context remain illustrative; some narrative fields remain seed examples; browser-local changes do not sync. See `docs/requirements.md` and `docs/development/sprint-log.md`.
+- **Scope changed:** made the next incomplete milestone/date/countdown, schedule and overall health, active risk totals, nav badges, health panel, and downloaded status brief derive from current scenario data; persisted the selected scenario label; require all milestones and work packages to be complete before showing `Complete`; flag unfinished work without an upcoming milestone. Simulation date is fixed at 11 Nov 2026.
+- **Validation:** local `npm run build` passed after both app revisions; the local Vite preview could not start (`EPERM` binding `127.0.0.1:5173`). Current exact PR-head build result is linked in the PR #4 body and Checks tab; use that SHA before integration.
+- **Known limitations:** confidence remains an illustrative risk heuristic; Gantt bars and budget context remain illustrative; some narrative fields remain seed examples; browser-local changes do not sync. The selected scenario name is browser-local. See `docs/requirements.md` and `docs/development/sprint-log.md`.
 - **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending dated independent reports. No gate is approved by this PR review or its build result.
 
 ## Historical handoffs and review feedback
@@ -79,3 +79,11 @@ Update this section for each review; keep historical records below it.
 - **Review source:** [PR #3](https://github.com/LenyLLL/projectDemo/pull/3), exact head `bbd2c4d78584680689d450669f84853c880bd34f`.
 - **Disposition:** Senior TPM **Accept with follow-up**; workspace diagnostics were considered non-blocking and cleanup was deferred. This PR review did not approve a formal review gate.
 - **Validation/integration:** [run 43112729192](https://github.com/LenyLLL/projectDemo/actions/runs/43112729192) passed `npm ci` and `npm run build`; PR #3 merged to `develop` at `8116d368a1cc002b8d3a37b3ea4b9d14ddde7bdb`.
+
+
+### PR #4 follow-up — 2026-11-12
+
+- **Review source:** PR #4 head `16a829490aa4f93b12e78b9220c61a56ceb636d1`.
+- **Findings:** the selected scenario label was not persisted with its data; the schedule could show `Complete` when unfinished work packages remained but no incomplete milestone existed.
+- **Response:** persist the selected label locally; show `Complete` only when all milestones and work packages are complete; flag unfinished packages without an upcoming milestone as `At risk`.
+- **Review state:** implementation and updated handoff are on the new PR #4 head. Await its exact-head build and independent re-review. All formal gates remain pending.
