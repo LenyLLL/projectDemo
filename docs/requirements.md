@@ -28,9 +28,10 @@ The product goal is to give a TPM one concise operating view for delivery status
 4. **Risks & Issues:** probability/impact exposure, status, owner, mitigation, and a control to add a risk.
 5. **Change & Decision Log:** fictional change requests and decisions, approval-state editing, and a control to add a change request.
 6. **Project Reporting:** calculated indicators and a downloadable text status brief.
-7. **Scenario controls:** baseline, supplier-slip, and recovery snapshots; scenario reload and baseline reset, with a visible summary of each scenario's work-package, milestone, and risk impact.
-8. **Persistence:** save changes in the current browser using `localStorage`; no backend or account is required.
-9. **Portfolio framing:** clearly identify the project and its data as fictional throughout the dashboard and README.
+7. **Scenario controls:** baseline, supplier-slip, vibration-recovery, and supplier-recovery snapshots; scenario reload and baseline reset, with a visible summary of work-package, milestone, and risk impact.
+8. **Project controls:** read-only illustrative RACI matrix, consolidated RAID log, verification traceability matrix, and supplier readiness tracker; change and decision records show rationale and decision authority.
+9. **Persistence:** save editable changes in the current browser using `localStorage`; no backend or account is required.
+10. **Portfolio framing:** clearly identify the project and its data as fictional throughout the dashboard and README.
 
 ### Out of scope
 
@@ -47,8 +48,9 @@ The product goal is to give a TPM one concise operating view for delivery status
 | Work package | ID, title, workstream, owner, status, priority, due date, progress | Search; edit status/progress; add a package; derive completion and average progress |
 | Milestone | ID, name, date, owner, status | Edit date/status; show on the development plan |
 | Risk/issue | ID, title, category, owner, probability, impact, status, mitigation action | Edit probability, impact, and status; derive exposure score; add a risk |
-| Change/decision | ID, type, title, owner, date, status, impact | Edit governance status; add a change request |
-| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, or recovery state; reset to baseline |
+| Change/decision | ID, type, title, owner, date, status, impact, rationale, decision authority | Edit governance status; add a change request; supplier recovery adds a pending approval record |
+| Project controls | RACI, RAID, verification traceability, supplier readiness seed records | Read-only fictional examples with owners, next actions, targets, and evidence/exit criteria |
+| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, vibration-recovery, or supplier-recovery state; reset to baseline |
 
 All data is fictional and browser-local. A scenario load intentionally replaces the current browser state with that scenario's seed snapshot.
 
@@ -72,7 +74,7 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-04 — Work package tracker:** users can search packages, edit status and progress, add a package, and see progress/completion indicators recalculate.
 - **AC-05 — Risk controls:** users can add a risk and edit probability, impact, and status; active-risk counts exclude `Closed` and `Resolved` entries, and exposure indicators recalculate.
 - **AC-06 — Change control:** users can add a change request and edit change/decision status.
-- **AC-07 — Scenarios:** all three scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
+- **AC-07 — Scenarios:** all four scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
 - **AC-08 — Reporting:** users can download a status brief containing the loaded scenario and simulation date, current calculated health/schedule, confidence heuristic, completion, next milestone/date/status, and active risk counts.
 - **AC-09 — Local-first operation:** core controls work without a backend; task, milestone, risk, change, and selected scenario state persist in the current browser only.
 - **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run the GitHub Actions build check; GitHub Pages deploys from `main` only.
@@ -83,6 +85,8 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-15 — Readable interface:** dashboard text has a minimum rendered CSS font size of 12px, including compact labels and mobile navigation.
 - **AC-16 — Full milestone plan:** the Development Plan control expands a full milestone register with ID/name, owner, target date, status, planned outcome, and an exit check.
 - **AC-17 — Scenario clarity:** each selected scenario displays a concise, explicit explanation of its key work-package, milestone, and risk changes; Supplier slip names the one-week delay and recovery scenario states its assumptions.
+- **AC-18 — Project controls:** a Project controls navigation item opens accessible RACI, RAID, verification traceability, and supplier readiness views; sample entries are explicitly labeled fictional and include ownership plus action or evidence fields.
+- **AC-19 — Change traceability:** change and decision records display rationale and decision authority; the supplier recovery scenario includes a pending alternate-source change request with its illustrative cost and schedule impact.
 
 ## 7. Current status
 
