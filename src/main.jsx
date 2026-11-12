@@ -40,10 +40,11 @@ const dateShort=d=>new Date(`${d}T12:00:00`).toLocaleDateString('en-GB',{day:'2-
 const dateFull=d=>new Date(`${d}T12:00:00`).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})
 const cls=s=>s.toLowerCase().replaceAll(' ','-')
 const SIMULATION_AS_OF='2026-11-11'
+const SCENARIO_STORAGE_KEY='atlas-dashboard-scenario'
 
 function App(){
  const [data,setData]=useState(()=>{try{return JSON.parse(localStorage.getItem('atlas-dashboard'))||initial}catch{return initial}})
- const [active,setActive]=useState('Project overview'),[scenario,setScenario]=useState('Baseline plan'),[saved,setSaved]=useState(true),[query,setQuery]=useState(''),[showAll,setShowAll]=useState(false),[modal,setModal]=useState(''),[mobileNav,setMobileNav]=useState(false),[toast,setToast]=useState('')
+ const [active,setActive]=useState('Project overview'),[scenario,setScenario]=useState(()=>{try{const saved=localStorage.getItem(SCENARIO_STORAGE_KEY);return scenarios[saved]?saved:'Baseline plan'}catch{return 'Baseline plan'}}),[saved,setSaved]=useState(true),[query,setQuery]=useState(''),[showAll,setShowAll]=useState(false),[modal,setModal]=useState(''),[mobileNav,setMobileNav]=useState(false),[toast,setToast]=useState('')
  const done=data.tasks.filter(t=>t.status==='Done').length,total=data.tasks.length,avg=total?Math.round(data.tasks.reduce((a,t)=>a+t.progress,0)/total):0
  const activeRisks=data.risks.filter(r=>!['Closed','Resolved'].includes(r.status)),openRisks=activeRisks.length
  const highExposureRisks=activeRisks.filter(r=>r.probability*r.impact>=15),highExposureCount=highExposureRisks.length
@@ -51,7 +52,8 @@ function App(){
  const daysToNextMilestone=nextMilestone?Math.round((Date.parse(`${nextMilestone.date}T12:00:00Z`)-Date.parse(`${SIMULATION_AS_OF}T12:00:00Z`))/86400000):null
  const timingLabel=nextMilestone?(daysToNextMilestone<0?`Overdue by ${Math.abs(daysToNextMilestone)} days`:daysToNextMilestone===0?'Due today':`${daysToNextMilestone} days remaining`):'No upcoming milestone'
  const atRiskWorkPackages=data.tasks.filter(t=>t.status==='At risk'),atRiskMilestones=data.milestones.filter(m=>m.status==='At risk')
- const scheduleStatus=daysToNextMilestone<0?'Delayed':nextMilestone?.status==='At risk'||atRiskWorkPackages.length>0||atRiskMilestones.length>0?'At risk':nextMilestone?'On track':'Complete'
+ const unscheduledWorkPackages=!nextMilestone?data.tasks.filter(t=>t.status!=='Done').length:0
+ const scheduleStatus=daysToNextMilestone<0?'Delayed':nextMilestone?.status==='At risk'||atRiskWorkPackages.length>0||atRiskMilestones.length>0?'At risk':nextMilestone?'On track':done===total&&data.milestones.every(m=>m.status==='Complete')?'Complete':'At risk'
  const healthStatus=scheduleStatus==='Delayed'?'Delayed':scheduleStatus==='At risk'||highExposureCount>0?'At risk':scheduleStatus==='Complete'?'Complete':'On track'
  const healthAccent=healthStatus==='At risk'||healthStatus==='Delayed'?'amber':'green'
  const averageRiskExposure=openRisks?activeRisks.reduce((sum,r)=>sum+r.probability*r.impact,0)/openRisks:0
@@ -59,14 +61,14 @@ function App(){
  const flaggedPlanCount=atRiskWorkPackages.length+atRiskMilestones.length
  const planFlagSummary=flaggedPlanCount?`${flaggedPlanCount} at-risk plan item${flaggedPlanCount===1?' is':'s are'} flagged`:'No at-risk plan items'
  const highExposureSummary=highExposureCount?`${highExposureCount} high-exposure risk${highExposureCount===1?' needs':'s need'} active mitigation`:'No open risks have high exposure'
- const healthSummary=healthStatus==='Delayed'?`${nextMilestone.name} is overdue by ${Math.abs(daysToNextMilestone)} days; review the recovery forecast.`:healthStatus==='At risk'?`${planFlagSummary}; ${highExposureSummary}.`:healthStatus==='Complete'?`All milestones are complete; ${openRisks} open risks remain tracked.`:`No at-risk plan items or high-exposure risks; ${openRisks} open risks remain tracked.`
- const deliveryInsight=daysToNextMilestone<0?`Recover ${nextMilestone.name.toLowerCase()} and reset the delivery forecast.`:atRiskWorkPackages.length?`Prioritize ${atRiskWorkPackages[0].title.toLowerCase()} mitigation ahead of ${nextMilestone?.name.toLowerCase()||'the next delivery milestone'}.`:highExposureCount?`Review ${highExposureCount} high-exposure risk${highExposureCount===1?'':'s'} with their owners this cycle.`:openRisks?`Maintain the mitigation cadence for ${openRisks} open risk${openRisks===1?'':'s'}.`:nextMilestone?`Confirm entry criteria for ${nextMilestone.name.toLowerCase()} before its due date.`:'All milestones are complete and no open risks remain.'
+ const healthSummary=healthStatus==='Delayed'?`${nextMilestone.name} is overdue by ${Math.abs(daysToNextMilestone)} days; review the recovery forecast.`:healthStatus==='At risk'?`${planFlagSummary}; ${unscheduledWorkPackages?`${unscheduledWorkPackages} unfinished work package${unscheduledWorkPackages===1?' has':'s have'} no upcoming milestone; `:''}${highExposureSummary}.`:healthStatus==='Complete'?`All milestones and work packages are complete; ${openRisks} open risks remain tracked.`:`No at-risk plan items or high-exposure risks; ${openRisks} open risks remain tracked.`
+ const deliveryInsight=daysToNextMilestone<0?`Recover ${nextMilestone.name.toLowerCase()} and reset the delivery forecast.`:atRiskWorkPackages.length?`Prioritize ${atRiskWorkPackages[0].title.toLowerCase()} mitigation ahead of ${nextMilestone?.name.toLowerCase()||'the next delivery milestone'}.`:unscheduledWorkPackages?`Review schedule coverage: ${unscheduledWorkPackages} unfinished work package${unscheduledWorkPackages===1?' has':'s have'} no upcoming milestone.`:highExposureCount?`Review ${highExposureCount} high-exposure risk${highExposureCount===1?'':'s'} with their owners this cycle.`:openRisks?`Maintain the mitigation cadence for ${openRisks} open risk${openRisks===1?'':'s'}.`:nextMilestone?`Confirm entry criteria for ${nextMilestone.name.toLowerCase()} before its due date.`:'All milestones and work packages are complete; no open risks remain.'
  const nextMilestoneLabel=nextMilestone?.name.replace(/^Engineering /,'')||'All complete'
  const filtered=useMemo(()=>data.tasks.filter(t=>`${t.title} ${t.owner} ${t.id} ${t.stream}`.toLowerCase().includes(query.toLowerCase())),[data.tasks,query])
  function persist(next){setData(next);localStorage.setItem('atlas-dashboard',JSON.stringify(next));setSaved(true)}
  function notice(s){setToast(s);setTimeout(()=>setToast(''),2400)}
- function loadScenario(name){setScenario(name);persist(JSON.parse(JSON.stringify(scenarios[name])));notice(`${name} loaded`)}
- function reset(){persist(JSON.parse(JSON.stringify(initial)));setScenario('Baseline plan');notice('Baseline restored')}
+ function loadScenario(name){setScenario(name);localStorage.setItem(SCENARIO_STORAGE_KEY,name);persist(JSON.parse(JSON.stringify(scenarios[name])));notice(`${name} loaded`)}
+ function reset(){persist(JSON.parse(JSON.stringify(initial)));setScenario('Baseline plan');localStorage.setItem(SCENARIO_STORAGE_KEY,'Baseline plan');notice('Baseline restored')}
  function updateTask(id,patch){persist({...data,tasks:data.tasks.map(t=>t.id===id?{...t,...patch}:t)})}
  function addTask(){persist({...data,tasks:[{id:`WP-${String(data.tasks.length+1).padStart(2,'0')}`,title:'New work package',stream:'Systems',owner:'Unassigned',initials:'UN',color:'#e4e9f0',status:'Not started',priority:'Medium',due:'2026-12-10',progress:0},...data.tasks]});setModal('');notice('Work package added')}
  function addRisk(){persist({...data,risks:[{id:`R-${String(data.risks.length+7).padStart(2,'0')}`,title:'New project risk',category:'Technical',owner:'Unassigned',probability:3,impact:3,status:'Open',action:'Define an owner and mitigation action.'},...data.risks]});setModal('');notice('Risk added')}
