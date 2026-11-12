@@ -23,12 +23,12 @@ The product goal is to give a TPM one concise operating view for delivery status
 ### In scope
 
 1. **Project Overview:** current project health, progress, next milestone, open risks, budget context, and project identity.
-2. **Development Plan & Milestones:** cross-functional development schedule and editable milestone dates/status.
+2. **Development Plan & Milestones:** cross-functional development schedule, editable milestone dates/status, and an expandable full plan showing each milestone's owner, target date, planned outcome, and exit check.
 3. **Work Packages & Action Tracker:** searchable packages with editable status and percent complete, plus the ability to add a package.
 4. **Risks & Issues:** probability/impact exposure, status, owner, mitigation, and a control to add a risk.
 5. **Change & Decision Log:** fictional change requests and decisions, approval-state editing, and a control to add a change request.
 6. **Project Reporting:** calculated indicators and a downloadable text status brief.
-7. **Scenario controls:** baseline, supplier-slip, and recovery snapshots; scenario reload and baseline reset.
+7. **Scenario controls:** baseline, supplier-slip, and recovery snapshots; scenario reload and baseline reset, with a visible summary of each scenario's work-package, milestone, and risk impact.
 8. **Persistence:** save changes in the current browser using `localStorage`; no backend or account is required.
 9. **Portfolio framing:** clearly identify the project and its data as fictional throughout the dashboard and README.
 
@@ -79,7 +79,7 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-11 — Review governance:** each review gate remains pending until an independent written result is recorded in `docs/reviews/`.
 - **AC-12 — Feedback versus approval:** a PR comment, implementation completion, or successful build/deployment is not a gate approval; only the dated report for the exact reviewed SHA can approve a gate.
 - **AC-13 — Live navigation counts:** the work-package badge equals the current package count and the risk badge equals the active risk count in the loaded scenario.
-- **AC-14 — Completion integrity:** `Complete` is shown only when every milestone and work package is complete; if work remains with no upcoming milestone, the dashboard reports an `At risk` schedule and identifies the unscheduled work.
+- **AC-14 — Completion integrity:** `Complete` is shown only when every milestone and work package is complete; if work remains with no upcoming milestone, the dashboard reports an `At risk` schedule and identifies the unscheduled work.\n- **AC-15 — Readable interface:** dashboard text has a minimum rendered CSS font size of 12px, including compact labels and mobile navigation.\n- **AC-16 — Full milestone plan:** the Development Plan control expands a full milestone register with ID/name, owner, target date, status, planned outcome, and an exit check.\n- **AC-17 — Scenario clarity:** each selected scenario displays a concise, explicit explanation of its key work-package, milestone, and risk changes; Supplier slip names the one-week delay and recovery scenario states its assumptions.
 
 ## 7. Current status
 
