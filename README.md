@@ -7,12 +7,12 @@ An interactive **portfolio simulation** of a robotics development project contro
 ## What you can explore
 
 - **Project Overview** — delivery health, calculated progress and risk indicators, schedule outlook, and the next milestone.
-- **Development Plan & Milestones** — a lightweight cross-functional schedule from requirements baseline through pilot readiness.
+- **Development Plan & Milestones** — a lightweight cross-functional schedule from requirements baseline through pilot readiness; open **Full plan** to see every milestone's owner, target date, planned outcome, and exit check.
 - **Work Packages & Action Tracker** — search tasks and edit status inline; completion counts and average progress update from the task data.
 - **Risks & Issues** — probability × impact exposure, named owners, mitigation actions, and add-risk controls.
 - **Change & Decision Log** — example change requests and architecture decisions with status and baseline impact.
 - **Project Reporting** — current scenario summary and a status brief action.
-- **Scenario controls** — compare a baseline plan, a supplier slip, and a recovery plan; reset to the original baseline at any time.
+- **Scenario controls** — compare a baseline plan, a supplier slip, and a recovery plan with a visible summary of each scenario's work-package, milestone, and risk impact; reset to the original baseline at any time.
 
 Edits are saved in the browser with `localStorage`; no backend or account is needed. Use **Reset demo** to restore the fictional baseline on the current browser.
 
