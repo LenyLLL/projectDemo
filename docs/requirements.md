@@ -79,7 +79,10 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-11 — Review governance:** each review gate remains pending until an independent written result is recorded in `docs/reviews/`.
 - **AC-12 — Feedback versus approval:** a PR comment, implementation completion, or successful build/deployment is not a gate approval; only the dated report for the exact reviewed SHA can approve a gate.
 - **AC-13 — Live navigation counts:** the work-package badge equals the current package count and the risk badge equals the active risk count in the loaded scenario.
-- **AC-14 — Completion integrity:** `Complete` is shown only when every milestone and work package is complete; if work remains with no upcoming milestone, the dashboard reports an `At risk` schedule and identifies the unscheduled work.\n- **AC-15 — Readable interface:** dashboard text has a minimum rendered CSS font size of 12px, including compact labels and mobile navigation.\n- **AC-16 — Full milestone plan:** the Development Plan control expands a full milestone register with ID/name, owner, target date, status, planned outcome, and an exit check.\n- **AC-17 — Scenario clarity:** each selected scenario displays a concise, explicit explanation of its key work-package, milestone, and risk changes; Supplier slip names the one-week delay and recovery scenario states its assumptions.
+- **AC-14 — Completion integrity:** `Complete` is shown only when every milestone and work package is complete; if work remains with no upcoming milestone, the dashboard reports an `At risk` schedule and identifies the unscheduled work.
+- **AC-15 — Readable interface:** dashboard text has a minimum rendered CSS font size of 12px, including compact labels and mobile navigation.
+- **AC-16 — Full milestone plan:** the Development Plan control expands a full milestone register with ID/name, owner, target date, status, planned outcome, and an exit check.
+- **AC-17 — Scenario clarity:** each selected scenario displays a concise, explicit explanation of its key work-package, milestone, and risk changes; Supplier slip names the one-week delay and recovery scenario states its assumptions.
 
 ## 7. Current status
 
