@@ -10,9 +10,10 @@ An interactive **portfolio simulation** of a robotics development project contro
 - **Development Plan & Milestones** — a lightweight cross-functional schedule from requirements baseline through pilot readiness; open **Full plan** to see every milestone's owner, target date, planned outcome, and exit check.
 - **Work Packages & Action Tracker** — search tasks and edit status inline; completion counts and average progress update from the task data.
 - **Risks & Issues** — probability × impact exposure, named owners, mitigation actions, and add-risk controls.
-- **Change & Decision Log** — example change requests and architecture decisions with status and baseline impact.
+- **Change & Decision Log** — change requests and decisions with rationale, decision authority, status, and baseline impact.
+- **Project Controls** — illustrative RACI matrix, consolidated RAID log, verification traceability matrix, and supplier readiness tracker.
 - **Project Reporting** — current scenario summary and a status brief action.
-- **Scenario controls** — compare a baseline plan, a supplier slip, and a recovery plan with a visible summary of each scenario's work-package, milestone, and risk impact; reset to the original baseline at any time.
+- **Scenario controls** — compare the baseline, supplier slip, vibration recovery, and supplier recovery scenarios with visible work-package, milestone, and risk impacts; reset to the original baseline at any time.
 
 Edits are saved in the browser with `localStorage`; no backend or account is needed. Use **Reset demo** to restore the fictional baseline on the current browser.
 
@@ -50,7 +51,7 @@ In the repository settings, set **Pages → Build and deployment → Source** to
 
 ## Project model
 
-The dashboard holds four browser-side collections: work packages, milestones, risks, and change/decision entries. Work-package progress and status are directly editable; overall progress and open/high-exposure risk counts are derived from the current scenario data. Scenario presets are seed snapshots, while user edits persist locally until a different scenario is loaded or the baseline reset is selected.
+The dashboard stores editable work packages, milestones, risks, and change/decision entries in the browser. RACI, RAID, verification traceability, and supplier readiness are illustrative reference records. Work-package progress and status are directly editable; overall progress and open/high-exposure risk counts are derived from the current scenario data. Scenario presets are seed snapshots, while user edits persist locally until a different scenario is loaded or the baseline reset is selected.
 
 ## Portfolio context
 
