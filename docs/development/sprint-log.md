@@ -95,3 +95,23 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Findings addressed:** Persist the selected scenario label so a reload keeps it aligned with the loaded local data; show `Complete` only when every milestone and work package is done; report unfinished packages with no upcoming milestone as `At risk` and surface the schedule gap.
 - **Validation:** Local `npm run build` passed after these app changes. This follow-up and its documentation move the PR head; the new exact head needs its own passing GitHub Actions build before integration.
 - **Review state:** This feedback is not a formal gate report. Architecture, MVP, Functional & Scenario, and Final Interview gates remain pending.
+
+
+## 2026-11-13 — Vibration recovery workflow and tracking (Issue #11)
+
+- **Status:** Implemented on a feature branch from the latest `develop`; PR and exact-head Actions result are recorded in the current TPM review handoff after publication.
+- **Review source:** [Issue #11](https://github.com/LenyLLL/projectDemo/issues/11), Senior TPM review of `main` at `d06539569797686927749b04ac2101ecd64db74a`.
+- **Delivered:** Added six editable recovery stages; REC-01 action tracking linked across stage, WP, REQ, and R-04 with verification methods; dependency readiness derived from linked actions; blocker/checkpoint tracking; baseline-versus-current MS-03 forecast and variance; stage-5 test record and reviewer acceptance; provisional R-04 residual risk; six evidence-based exit criteria and closure approval. Supplier Recovery and Project Controls remain available.
+- **Persistence/framing:** Recovery records stay in browser `localStorage` with the selected scenario; no backend or non-fictional product data is added.
+- **Validation:** Added focused Node test-runner coverage and a manual scenario checklist. The exact PR head must pass its own GitHub Actions `build` and `test` checks before review/integration; no formal review gate is approved by implementation or CI.
+- **Known limit:** Critical-path impact is labeled “assessment required”; this demo does not contain project-level dependency logic (recovery-action readiness is tracked explicitly). Vibration acceptance limits come from REQ-VIB-042 and are not invented in the UI.
+- **Next:** Request Senior TPM second review on the exact PR head and wait for an independent disposition. Keep all formal gates pending.
+
+
+
+## 2026-11-13 — Address repeated provisional R-04 roll-up finding (PR #12)
+
+- **Review source:** second review of PR #12 at `454d5ba21780e2fc48ae88367816cbe2824597e2`, [review comment #5890705994](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994); same finding first recorded at [review comment #5890672778](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890672778).
+- **Finding/disposition:** accepted P2. Project-level exposure and confidence had consumed forecast R-04 P2×I5 before the evidence gate. The follow-up keeps baseline P4×I5 in roll-ups until verification evidence and risk acceptance pass; it makes the assumption visible in project health, KPI notes, risk detail, delivery insight, and exported status brief. Accepted residual state transitions to P2×I5. Supplier Recovery remains separate and unchanged.
+- **Validation:** local `npm test` passed 7/7; `npm run build` passed. New exact-head Actions evidence and the follow-up PR are recorded in `docs/TPM_REVIEW_REQUEST.md` after publication.
+- **Gate status:** both source reviews are COMMENTED feedback, not dated gate reports. Architecture, MVP, Functional & Scenario, and Final Interview gates remain pending.
