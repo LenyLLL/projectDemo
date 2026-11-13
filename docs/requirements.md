@@ -78,7 +78,7 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-07 — Scenarios:** all four scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
 - **AC-08 — Reporting:** users can download a status brief containing the loaded scenario and simulation date, current calculated health/schedule, confidence heuristic, completion, next milestone/date/status, and active risk counts.
 - **AC-09 — Local-first operation:** core controls work without a backend; task, milestone, risk, change, and selected scenario state persist in the current browser only.
-- **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run the GitHub Actions build check; GitHub Pages deploys from `main` only.
+- **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run focused tests and the GitHub Actions production build; GitHub Pages deploys from `main` only.
 - **AC-11 — Review governance:** each review gate remains pending until an independent written result is recorded in `docs/reviews/`.
 - **AC-12 — Feedback versus approval:** a PR comment, implementation completion, or successful build/deployment is not a gate approval; only the dated report for the exact reviewed SHA can approve a gate.
 - **AC-13 — Live navigation counts:** the work-package badge equals the current package count and the risk badge equals the active risk count in the loaded scenario.
