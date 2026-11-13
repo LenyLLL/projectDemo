@@ -6,7 +6,7 @@
 - Feature branch: `feature/provisional-risk-rollup-gate` → `develop`
 - Source feedback: [PR #12 second review at `454d5ba`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994); same finding first raised [at `0597d29`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890672778).
 - Source integration baseline: `develop` commit `26f0e452278c25e143f30ac0554d14e1a327a5b6`. `main` was not modified.
-- Follow-up head SHA and exact-head Actions evidence: to be recorded after the PR is opened and the final handoff commit passes CI.
+- Current follow-up head before final handoff evidence refresh: `a6f71ee635717eb1b28e6043161247b38505974c`; this documentation refresh changes the head and requires a new exact-head Actions run. Final SHA/run are recorded below after CI passes.
 - Scope: carry forward PR #12's Issue #11 workflow required for integration from `develop`, plus the review fix: preserve baseline R-04 P4×I5 in global risk/confidence roll-ups until evidence and risk decision acceptance; make the assumption visible; switch to P2×I5 only after acceptance. Supplier Recovery and other scenarios retain their existing behavior.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
 - Validation: local `npm test` passed 7/7 and `npm run build` passed. Exact PR-head Actions result will be recorded after final handoff metadata is committed.
@@ -40,13 +40,14 @@ A PR review comment is feedback on that revision. It does not approve a review g
 
 Update this section for each review; keep historical records below it.
 
-- **PR / branch:** [PR #12](https://github.com/LenyLLL/projectDemo/pull/12), `feature/vibration-recovery-workflow` → `develop`.
-- **Review source:** [Issue #11](https://github.com/LenyLLL/projectDemo/issues/11), review of `main` at `d06539569797686927749b04ac2101ecd64db74a`.
-- **Implementation source revision:** `5ad90032552c53d36e59440b1e9551d0b1e41fe3` contains the latest recovery model and UI, including explicit verification methods and action-linked dependency readiness. Current PR `head.sha` is authoritative for review; any later commit requires refreshed exact-head build and test results.
-- **Scope changed:** implemented the complete six-stage workflow, linked tracking data/dependencies and verification methods, schedule comparison, verification traceability, risk evidence gate, six exit criteria, and local persistence. Supplier Recovery and Project Controls remain available.
-- **Validation:** local `npm test` passed 5/5 and `npm run build` passed after the final code change. Exact implementation source `5ad90032552c53d36e59440b1e9551d0b1e41fe3` passed npm ci, focused tests, and build in Actions [run 43422289240](https://github.com/LenyLLL/projectDemo/actions/runs/43422289240). A subsequent handoff-only commit requires its own exact-head check.
-- **Known limitations:** all content is fictional; no backend or dependency/critical-path model is added. Critical-path impact remains “assessment required”; vibration threshold remains controlled by approved REQ-VIB-042.
-- **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending dated independent reports. This issue, implementation, and CI do not approve a gate.
+- **PR / branch:** [PR #13](https://github.com/LenyLLL/projectDemo/pull/13), `feature/provisional-risk-rollup-gate` → `develop`.
+- **Source review:** [PR #12 second review](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994) at `454d5ba21780e2fc48ae88367816cbe2824597e2`; repeated finding first recorded at `0597d29e1e17db9fda75476a98e323df77c2cff1`.
+- **Integration baseline:** `develop` at `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` was not modified.
+- **Current source SHA:** `a6f71ee635717eb1b28e6043161247b38505974c` was superseded by this handoff refresh. Final reviewed SHA will be the exact head in PR #13 after its latest Actions run.
+- **Scope changed:** carried forward PR #12's Issue #11 implementation because develop predates it, and fixed the repeated P2 finding by retaining baseline R-04 P4×I5 in project roll-ups until REQ-VIB-042 evidence and residual-risk decision acceptance. Project KPI, health, insight, risk detail, and export expose this basis; accepted residual transitions to P2×I5. Supplier Recovery remains available.
+- **Validation:** local `npm test` passed 7/7 and `npm run build` passed. GitHub Actions exact-head validation pending for this documentation revision.
+- **Known limitations:** all data remains fictional and browser-local; no backend or project critical-path model is added; numeric vibration acceptance is governed by REQ-VIB-042.
+- **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending separate dated reports under `docs/reviews/`.
 
 ## Historical handoffs and review feedback
 
