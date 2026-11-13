@@ -13,8 +13,8 @@ export const vibrationRecoverySeed = {
     { id: 'recover', name: 'Project Recovery', status: 'Not started', owner: 'Program Manager', targetDate: '2026-11-20', output: 'Record impact, forecast decision, and closure approval after exit criteria are met.' }
   ],
   actions: [
-    { id: 'RA-01', stageId: 'correct', title: 'Run controlled isolation-mount A/B correction', owner: 'Luca Romano', workPackageId: 'WP-04', requirementId: 'REQ-VIB-042', riskId: 'R-04', dueDate: '2026-11-16', status: 'In progress', evidence: '' },
-    { id: 'RA-02', stageId: 'correct', title: 'Check encoder feedback and capture configuration baseline', owner: 'Priya Nair', workPackageId: 'WP-03', requirementId: 'REQ-VIB-042', riskId: 'R-04', dueDate: '2026-11-15', status: 'Not started', evidence: '' }
+    { id: 'RA-01', stageId: 'correct', title: 'Run controlled isolation-mount A/B correction', owner: 'Luca Romano', workPackageId: 'WP-04', requirementId: 'REQ-VIB-042', riskId: 'R-04', verificationMethod: 'Isolation-mount A/B bench test against the approved vibration requirement', dueDate: '2026-11-16', status: 'In progress', evidence: '' },
+    { id: 'RA-02', stageId: 'correct', title: 'Check encoder feedback and capture configuration baseline', owner: 'Priya Nair', workPackageId: 'WP-03', requirementId: 'REQ-VIB-042', riskId: 'R-04', verificationMethod: 'Compare baseline and corrected encoder/control configuration during the REQ-VIB-042 bench test', dueDate: '2026-11-15', status: 'Not started', evidence: '' }
   ],
   verification: { requirementId: 'REQ-VIB-042', method: 'Isolation-mount A/B bench test', status: 'Pending', testRecord: '', reviewerAccepted: false },
   blockers: [{ id: 'BL-01', title: 'Root-cause evidence and vibration re-test are pending', owner: 'Luca Romano', status: 'Open' }],
@@ -28,7 +28,7 @@ export function deriveRecoveryMetrics(recovery, workPackages, milestones, risks 
   const unresolvedBlockers = recovery.blockers.filter(blocker => blocker.status !== 'Resolved').length
   const verificationAccepted = recovery.verification.status === 'Passed' && Boolean(recovery.verification.testRecord.trim()) && recovery.verification.reviewerAccepted
   const rootCauseDispositioned = ['Confirmed', 'Formally dispositioned'].includes(recovery.rootCause.disposition) && Boolean(recovery.rootCause.rationale.trim())
-  const actionsComplete = recovery.actions.length > 0 && recovery.actions.every(action => action.status === 'Completed' && Boolean(action.evidence.trim()) && action.workPackageId && action.requirementId && action.riskId)
+  const actionsComplete = recovery.actions.length > 0 && recovery.actions.every(action => action.status === 'Completed' && Boolean(action.evidence.trim()) && Boolean(action.verificationMethod?.trim()) && action.workPackageId && action.requirementId && action.riskId)
   const workPackagesById = new Map(workPackages.map(item => [item.id, item]))
   const riskIds = new Set(risks.map(item => item.id))
   const requirementIds = new Set(requirements.map(item => item.id))
