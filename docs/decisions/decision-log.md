@@ -2,6 +2,12 @@
 
 Record material product, technical, and delivery decisions. Add new entries at the top; retain prior entries.
 
+## 2026-11-13 — Keep vibration recovery evidence-linked and provisional
+
+- **DEC-009 — Model recovery as linked local records with evidence-gated closure.** The vibration scenario owns a six-stage workflow, action register, linked dependency readiness, blockers, schedule forecast, REQ-VIB-042 record, R-04 baseline/residual assessment, decision authority, and closeout. Actions retain stage, WP, requirement, and risk identifiers; dependency readiness derives from its linked actions. Stage progress and overall recovery status are derived from saved records.
+- **Risk/exit rule:** R-04 P4×I5 remains the baseline; the scenario P2×I5 value remains provisional until REQ-VIB-042 passes with a retained test-record reference and reviewer acceptance. Recovery cannot close solely because six stages are checked off: documented root-cause disposition, evidenced actions, no release blockers, accepted residual risk, updated project controls, and closure approval are required.
+- **Consequences:** Use 20 Nov 2026 as the MS-03 baseline, derive current forecast/variance from the editable milestone, and label critical-path assessment as required because this demo does not model dependencies. Keep scenario data fictional and browser-local; do not invent a numeric vibration limit.
+
 ## 2026-11-11 — Derive delivery indicators from the selected scenario
 
 - **DEC-008 — Keep project status scenario-derived and explain the simulation date.** Use the earliest incomplete milestone and the fixed simulation date of 11 Nov 2026 for the displayed milestone countdown. Derive schedule and overall health from milestone/task status and active risk exposure; exclude closed/resolved risks from active counts. Persist the selected scenario label beside its data. Show `Complete` only when every milestone is complete and every work package is done; unfinished packages with no upcoming milestone indicate `At risk`. Keep delivery confidence labeled as an illustrative heuristic and budget context explicitly non-calculated.
@@ -26,3 +32,4 @@ Record material product, technical, and delivery decisions. Add new entries at t
 - **Context:** The dashboard is developed with an Agent and reviewed asynchronously by a Senior TPM in a separate conversation.
 - **Decision:** Keep the review brief and durable review records in `docs/`; identify the exact branch, PR, and commit for each review. Treat repository history and PR diffs as the implementation source of truth.
 - **Consequences:** Reviewers can refresh current code and discussions directly from GitHub. Each review remains traceable to a specific change.
+
