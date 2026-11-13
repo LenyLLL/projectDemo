@@ -7,7 +7,7 @@
 - Source feedback: [PR #13 review at `354e165`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891075685); repeated prior finding at [review `5891059924`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891059924).
 - Source integration baseline: latest `develop` commit `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` remains unchanged.
 - Scope: restore the PR build's explicit `contents: read` permission removed in PR #13; preserve the diagnostics/concurrency controls present on `develop`; run npm ci, focused tests, and build. Carry forward PR #13's reviewed app changes because develop predates them.
-- Validation: local tests/build and exact-head Actions evidence will be listed after PR publication.
+- Source SHA before final handoff metadata update: `4919bcd0ece1f1dd18a325822e1616d4a57150c8`; this docs commit advances the PR head. Its Actions evidence will be confirmed on the final PR head.
 - Gate status: Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending separate dated reports under `docs/reviews/`.
 
 ## Context
@@ -41,9 +41,9 @@ Update this section for each review; keep historical records below it.
 - **PR / branch:** [PR #14](https://github.com/LenyLLL/projectDemo/pull/14), `feature/readonly-pr-build-permissions` → `develop`.
 - **Source review:** [PR #13 second review](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891075685) at `354e165b3f47c50cfec77944aad463a50e8266cc`; same P2 first recorded at [review `5891059924`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891059924).
 - **Integration baseline:** latest `develop` at `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` was not modified.
-- **Finding/disposition:** accepted P2. Restored `permissions: contents: read` and retained the develop workflow's workspace diagnostics and concurrency cancellation; the npm test step and build remain.
+- **Finding/disposition:** accepted P2. Restored `permissions: contents: read` and retained the develop workflow's workspace diagnostics and concurrency cancellation; the npm test step and build remain. Local `npm test` passed 7/7 and `npm run build` passed.
 - **Carry-forward:** PR #13 app behavior is included because it is not yet in develop; this includes provisional R-04 baseline roll-ups and the separate Supplier Recovery scenario.
-- **Exact head SHA and Actions run:** recorded after final PR #14 publication.
+- **Source revision:** `4919bcd0ece1f1dd18a325822e1616d4a57150c8` is the code/workflow state before this handoff metadata commit. The exact final PR SHA and Actions run are authoritative in the current PR #14 body.
 - **Known limitations:** all scenario data is fictional and browser-local; no backend or project critical-path model is added.
 - **Gate status:** all four formal review gates remain pending separate dated reports in `docs/reviews/`.
 
