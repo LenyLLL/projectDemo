@@ -25,6 +25,12 @@ export default function VibrationRecoveryPanel({ recovery, metrics, tasks, miles
       <article><span>Open blockers</span><b>{metrics.unresolvedBlockers}</b><small>{recovery.blockers.map(blocker => <label className="recovery-blocker" key={blocker.id}><input type="checkbox" checked={blocker.status === 'Resolved'} onChange={event => onBlocker(blocker.id, { status: event.target.checked ? 'Resolved' : 'Open' })}/>{blocker.title} · {blocker.owner}</label>)}</small></article>
     </div>
 
+    <div className="recovery-dependencies"><div className="section-kicker">DEPENDENCIES</div>{recovery.dependencies.map(dependency => {
+      const linkedActions = dependency.actionIds.map(id => recovery.actions.find(action => action.id === id)).filter(Boolean)
+      const ready = linkedActions.length > 0 && linkedActions.every(action => action.status === 'Completed' && Boolean(action.evidence.trim()))
+      return <article key={dependency.id}><div><b>{dependency.id} · {dependency.title}</b><small>Linked actions: {linkedActions.map(action => action.id).join(', ') || 'No actions linked'} · Owner: {dependency.owner} · Target: {dateLabel(dependency.targetDate)}</small></div><span className={ready ? 'dependency-ready' : ''}>{ready ? 'Ready' : 'Open'}</span></article>
+    })}</div>
+
     <div className="recovery-schedule">
       <div><span>MS-03 baseline</span><b>{dateLabel('2026-11-20')}</b></div>
       <div><span>MS-03 current forecast</span><b>{ms03 ? dateLabel(ms03.date) : 'Milestone missing'}</b><small><span className="inline-edit-label">Edit forecast in Development Plan</span></small></div>
