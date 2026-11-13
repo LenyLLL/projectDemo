@@ -6,7 +6,7 @@
 - Feature branch: `feature/provisional-risk-rollup-gate` → `develop`
 - Source feedback: [PR #12 second review at `454d5ba`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994); same finding first raised [at `0597d29`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890672778).
 - Source integration baseline: `develop` commit `26f0e452278c25e143f30ac0554d14e1a327a5b6`. `main` was not modified.
-- PR #13 head `9103f4a15a3aa5483abf000f019cd5dc43dc1c5e` passed exact-head CI in [run 43425624923](https://github.com/LenyLLL/projectDemo/actions/runs/43425624923). This handoff update itself advances the branch; the latest PR head and its own Actions run remain authoritative for review.
+- PR #13 source revision `8a7ecefdf3663b03406f0e38512ca5519521cc1b` passed exact-head CI in [run 43425951880](https://github.com/LenyLLL/projectDemo/actions/runs/43425951880). The final handoff metadata commit follows this source revision; the latest PR head and its own Actions run remain authoritative for review.
 - Scope: carry forward PR #12's Issue #11 workflow required for integration from `develop`, plus the review fix: preserve baseline R-04 P4×I5 in global risk/confidence roll-ups until evidence and risk decision acceptance; make the assumption visible; switch to P2×I5 only after acceptance. Supplier Recovery and other scenarios retain their existing behavior.
 - Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
 - Validation: local `npm test` passed 7/7 and `npm run build` passed. Exact PR-head Actions result will be recorded after final handoff metadata is committed.
@@ -43,9 +43,9 @@ Update this section for each review; keep historical records below it.
 - **PR / branch:** [PR #13](https://github.com/LenyLLL/projectDemo/pull/13), `feature/provisional-risk-rollup-gate` → `develop`.
 - **Source review:** [PR #12 second review](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994) at `454d5ba21780e2fc48ae88367816cbe2824597e2`; repeated finding first recorded at `0597d29e1e17db9fda75476a98e323df77c2cff1`.
 - **Integration baseline:** `develop` at `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` was not modified.
-- **Verified pre-handoff source SHA:** `9103f4a15a3aa5483abf000f019cd5dc43dc1c5e`; this documentation refresh creates the next head. The final PR body records the latest review SHA.
+- **Verified source SHA:** `8a7ecefdf3663b03406f0e38512ca5519521cc1b`; this handoff update creates a later documentation-only head. The final PR body records the exact current review SHA.
 - **Scope changed:** carried forward PR #12's Issue #11 implementation because develop predates it, and fixed the repeated P2 finding by retaining baseline R-04 P4×I5 in project roll-ups until REQ-VIB-042 evidence and residual-risk decision acceptance. Project KPI, health, insight, risk detail, and export expose this basis; accepted residual transitions to P2×I5. Supplier Recovery remains available.
-- **Validation:** local `npm test` passed 7/7 and `npm run build` passed. GitHub Actions [run 43425624923](https://github.com/LenyLLL/projectDemo/actions/runs/43425624923) passed `npm ci`, `npm test`, and production build on exact pre-handoff SHA `9103f4a15a3aa5483abf000f019cd5dc43dc1c5e`; the final documentation refresh requires its own exact-head run.
+- **Validation:** local `npm test` passed 7/7 and `npm run build` passed. GitHub Actions [run 43425951880](https://github.com/LenyLLL/projectDemo/actions/runs/43425951880) passed `npm ci`, `npm test`, and production build on source SHA `8a7ecefdf3663b03406f0e38512ca5519521cc1b`; this final handoff metadata commit requires its own exact-head run.
 - **Known limitations:** all data remains fictional and browser-local; no backend or project critical-path model is added; numeric vibration acceptance is governed by REQ-VIB-042.
 - **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending separate dated reports under `docs/reviews/`.
 
