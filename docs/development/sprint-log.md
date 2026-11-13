@@ -95,3 +95,15 @@ Append dated progress entries; do not rewrite prior entries. Link each entry to 
 - **Findings addressed:** Persist the selected scenario label so a reload keeps it aligned with the loaded local data; show `Complete` only when every milestone and work package is done; report unfinished packages with no upcoming milestone as `At risk` and surface the schedule gap.
 - **Validation:** Local `npm run build` passed after these app changes. This follow-up and its documentation move the PR head; the new exact head needs its own passing GitHub Actions build before integration.
 - **Review state:** This feedback is not a formal gate report. Architecture, MVP, Functional & Scenario, and Final Interview gates remain pending.
+
+
+## 2026-11-13 — Vibration recovery workflow and tracking (Issue #11)
+
+- **Status:** Implemented on a feature branch from the latest `develop`; PR and exact-head Actions result are recorded in the current TPM review handoff after publication.
+- **Review source:** [Issue #11](https://github.com/LenyLLL/projectDemo/issues/11), Senior TPM review of `main` at `d06539569797686927749b04ac2101ecd64db74a`.
+- **Delivered:** Added six editable recovery stages; REC-01 action tracking linked across stage, WP, REQ, and R-04; blocker/checkpoint tracking; baseline-versus-current MS-03 forecast and variance; stage-5 test record and reviewer acceptance; provisional R-04 residual risk; six evidence-based exit criteria and closure approval. Supplier Recovery and Project Controls remain available.
+- **Persistence/framing:** Recovery records stay in browser `localStorage` with the selected scenario; no backend or non-fictional product data is added.
+- **Validation:** Added focused Node test-runner coverage and a manual scenario checklist. The exact PR head must pass its own GitHub Actions `build` and `test` checks before review/integration; no formal review gate is approved by implementation or CI.
+- **Known limit:** Critical-path impact is labeled “assessment required”; this demo does not contain dependency logic. Vibration acceptance limits come from REQ-VIB-042 and are not invented in the UI.
+- **Next:** Request Senior TPM second review on the exact PR head and wait for an independent disposition. Keep all formal gates pending.
+
