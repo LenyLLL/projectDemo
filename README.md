@@ -10,9 +10,11 @@ An interactive **portfolio simulation** of a robotics development project contro
 - **Development Plan & Milestones** — a lightweight cross-functional schedule from requirements baseline through pilot readiness; open **Full plan** to see every milestone's owner, target date, planned outcome, and exit check.
 - **Work Packages & Action Tracker** — search tasks and edit status inline; completion counts and average progress update from the task data.
 - **Risks & Issues** — probability × impact exposure, named owners, mitigation actions, and add-risk controls.
-- **Change & Decision Log** — example change requests and architecture decisions with status and baseline impact.
+- **Change & Decision Log** — change requests and decisions with rationale, decision authority, status, and baseline impact.
+- **Project Controls** — illustrative RACI matrix, consolidated RAID log, verification traceability matrix, and supplier readiness tracker.
 - **Project Reporting** — current scenario summary and a status brief action.
-- **Scenario controls** — compare a baseline plan, a supplier slip, and a recovery plan with a visible summary of each scenario's work-package, milestone, and risk impact; reset to the original baseline at any time.
+- **Scenario controls** — compare the baseline, supplier slip, vibration recovery, and supplier recovery scenarios with visible work-package, milestone, and risk impacts; reset to the original baseline at any time.
+- **Vibration Recovery workflow** — when selected, track six recovery stages, linked actions, blockers, schedule variance, REQ-VIB-042 test evidence, provisional residual risk, and evidence-based exit approval. The Supplier Recovery panel remains available in its own scenario.
 
 Edits are saved in the browser with `localStorage`; no backend or account is needed. Use **Reset demo** to restore the fictional baseline on the current browser.
 
@@ -50,8 +52,11 @@ In the repository settings, set **Pages → Build and deployment → Source** to
 
 ## Project model
 
-The dashboard holds four browser-side collections: work packages, milestones, risks, and change/decision entries. Work-package progress and status are directly editable; overall progress and open/high-exposure risk counts are derived from the current scenario data. Scenario presets are seed snapshots, while user edits persist locally until a different scenario is loaded or the baseline reset is selected.
+The dashboard stores editable work packages, milestones, risks, change/decision entries, and vibration-recovery tracking records in the browser. RACI, RAID, verification traceability, and supplier readiness remain illustrative reference records. Recovery actions reference work packages, requirements, and risks; the residual vibration risk stays provisional until approved requirement evidence is recorded and accepted. Recovery completion requires all six exit criteria and closure approval, not only completed stage statuses. Scenario presets are seed snapshots, while edits persist locally for the selected scenario until another scenario is loaded or the baseline reset is selected.
+
+Run `npm test` for focused recovery-logic checks and `npm run build` for the production bundle. See [the manual recovery checklist](docs/testing/vibration-recovery-checklist.md) for scenario-switching, persistence, evidence-gate, and reset checks.
 
 ## Portfolio context
 
 This project is intentionally framed as a **TPM operating tool** for a fictional hardware and embedded-software development effort. It is not a case study of logistics or cross-border product shipping, and it makes no claim that the portfolio owner managed the fictional program.
+
