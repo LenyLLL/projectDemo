@@ -2,15 +2,13 @@
 
 - Repository: [LenyLLL/projectDemo](https://github.com/LenyLLL/projectDemo)
 - Default/release branch: `main`; integration branch: `develop`
-- Current review PR: [#4 — Derive project status KPIs from the active scenario](https://github.com/LenyLLL/projectDemo/pull/4)
-- Feature branch: `feature/scenario-derived-project-status` → `develop`
-- Exact source SHA: see the latest PR #4 body and GitHub `head.sha`; copy that 40-character value into any dated review report before reviewing. The PR body is refreshed after the final documentation commit.
-- Scope: scenario-derived health/schedule indicators, next incomplete milestone/date/countdown, active risk counts, work-package/risk navigation badges, matching status brief, persisted selected-scenario label, and a guard against reporting completion while work remains.
-- Live demo: [https://lenylll.github.io/projectDemo/](https://lenylll.github.io/projectDemo/)
-- PR #4 validation: local `npm run build` passed after the app changes; local Vite preview was unavailable because binding to `127.0.0.1:5173` failed with `EPERM`. The app revision `dd73a8e70e99ce64ee57fce69933e266bbd15b00` passed the required `build` check in [Actions run 43135852995](https://github.com/LenyLLL/projectDemo/actions/runs/43135852995). The latest PR head and its required check remain authoritative for integration; see the PR body and Checks tab.
-- Release control: `main` requires a pull request and the GitHub Actions `build` check; approvals are disabled. GitHub Pages deploys from `main`; PR #4 targets `develop` and does not itself publish to Pages.
-- Prior integration: PR #3 was reviewed at `bbd2c4d78584680689d450669f84853c880bd34f`, accepted with a non-blocking workflow cleanup follow-up, and merged to `develop` at `8116d368a1cc002b8d3a37b3ea4b9d14ddde7bdb`. Its PR-head build passed in [run 43112729192](https://github.com/LenyLLL/projectDemo/actions/runs/43112729192).
-- Baseline-only deployment evidence: [run 43104615679](https://github.com/LenyLLL/projectDemo/actions/runs/43104615679) validates the deployed code baseline `452cac9c6962ce9d0d6a367d61c967c7e6438329`, not the current PR #4 source.
+- Current review PR: [#14 — Restore read-only permissions to the PR build](https://github.com/LenyLLL/projectDemo/pull/14)
+- Feature branch: `feature/readonly-pr-build-permissions` → `develop`
+- Source feedback: [PR #13 review at `354e165`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891075685); repeated prior finding at [review `5891059924`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891059924).
+- Source integration baseline: latest `develop` commit `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` remains unchanged.
+- Scope: restore the PR build's explicit `contents: read` permission removed in PR #13; preserve the diagnostics/concurrency controls present on `develop`; run npm ci, focused tests, and build. Carry forward PR #13's reviewed app changes because develop predates them.
+- Validation: local tests/build and exact-head Actions evidence will be listed after PR publication.
+- Gate status: Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending separate dated reports under `docs/reviews/`.
 
 ## Context
 
@@ -40,12 +38,14 @@ A PR review comment is feedback on that revision. It does not approve a review g
 
 Update this section for each review; keep historical records below it.
 
-- **PR / branch:** [PR #4](https://github.com/LenyLLL/projectDemo/pull/4), `feature/scenario-derived-project-status` → `develop`.
-- **Source revision:** the exact current 40-character PR #4 `head.sha` is recorded in the PR body; the reviewer should copy it into the dated report before review. Any later commit requires refreshing that SHA and re-running the PR-head check.
-- **Scope changed:** made the next incomplete milestone/date/countdown, schedule and overall health, active risk totals, nav badges, health panel, and downloaded status brief derive from current scenario data; persisted the selected scenario label; require all milestones and work packages to be complete before showing `Complete`; flag unfinished work without an upcoming milestone. Simulation date is fixed at 11 Nov 2026.
-- **Validation:** local `npm run build` passed after both app revisions; the local Vite preview could not start (`EPERM` binding `127.0.0.1:5173`). The follow-up fixes are present at app revision `dd73a8e70e99ce64ee57fce69933e266bbd15b00`, whose exact-head build passed in [run 43135852995](https://github.com/LenyLLL/projectDemo/actions/runs/43135852995). Use the current PR head and its own required check before integration.
-- **Known limitations:** confidence remains an illustrative risk heuristic; Gantt bars and budget context remain illustrative; some narrative fields remain seed examples; browser-local changes do not sync. The selected scenario name is browser-local. See `docs/requirements.md` and `docs/development/sprint-log.md`.
-- **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending dated independent reports. No gate is approved by this PR review or its build result.
+- **PR / branch:** [PR #14](https://github.com/LenyLLL/projectDemo/pull/14), `feature/readonly-pr-build-permissions` → `develop`.
+- **Source review:** [PR #13 second review](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891075685) at `354e165b3f47c50cfec77944aad463a50e8266cc`; same P2 first recorded at [review `5891059924`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891059924).
+- **Integration baseline:** latest `develop` at `26f0e452278c25e143f30ac0554d14e1a327a5b6`; `main` was not modified.
+- **Finding/disposition:** accepted P2. Restored `permissions: contents: read` and retained the develop workflow's workspace diagnostics and concurrency cancellation; the npm test step and build remain.
+- **Carry-forward:** PR #13 app behavior is included because it is not yet in develop; this includes provisional R-04 baseline roll-ups and the separate Supplier Recovery scenario.
+- **Exact head SHA and Actions run:** recorded after final PR #14 publication.
+- **Known limitations:** all scenario data is fictional and browser-local; no backend or project critical-path model is added.
+- **Gate status:** all four formal review gates remain pending separate dated reports in `docs/reviews/`.
 
 ## Historical handoffs and review feedback
 
@@ -87,3 +87,20 @@ Update this section for each review; keep historical records below it.
 - **Findings:** the selected scenario label was not persisted with its data; the schedule could show `Complete` when unfinished work packages remained but no incomplete milestone existed.
 - **Response:** persist the selected label locally; show `Complete` only when all milestones and work packages are complete; flag unfinished packages without an upcoming milestone as `At risk`.
 - **Review state:** implementation and updated handoff are on the new PR #4 head. Await its exact-head build and independent re-review. All formal gates remain pending.
+
+
+
+### PR #12 second review follow-up — provisional R-04 roll-up treatment
+
+- **Review sources:** [second review at exact SHA `454d5ba21780e2fc48ae88367816cbe2824597e2`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890705994), repeating the original finding from [review at `0597d29e1e17db9fda75476a98e323df77c2cff1`](https://github.com/LenyLLL/projectDemo/pull/12#pullrequestreview-5890672778).
+- **Finding:** before evidence and risk acceptance, scenario R-04 P2×I5 affected project-level high-exposure count and confidence without the provisional qualifier.
+- **Disposition:** accepted. New PR #13 retains baseline P4×I5 in project-level risk exposure, confidence, health context, and export until the verification and risk decision gates are accepted. P2×I5 remains visible as a provisional scenario forecast and becomes the roll-up input only after acceptance. Supplier Recovery remains available and its R-08 rating is unchanged.
+- **Source review state:** both reviews are COMMENTED feedback, not formal gate approvals. The reviewer found no other blocker against Issue #11. All four formal gates remain pending.
+
+
+### PR #13 least-privilege workflow review finding
+
+- **Review source:** [second review at exact head `354e165b3f47c50cfec77944aad463a50e8266cc`](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891075685), confirming [the original finding](https://github.com/LenyLLL/projectDemo/pull/13#pullrequestreview-5891059924).
+- **Finding/disposition:** accepted P2. Restored explicit `permissions: contents: read` for the pull-request build workflow. Also preserve the diagnostic and concurrency configuration from `develop` and retain focused tests.
+- **Follow-up:** PR #14 is open from `feature/readonly-pr-build-permissions` to `develop`; see the current PR body for the exact review SHA and Actions result.
+- **Review state:** COMMENTED feedback; no formal gate is approved.
