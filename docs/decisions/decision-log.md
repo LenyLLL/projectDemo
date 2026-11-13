@@ -4,7 +4,7 @@ Record material product, technical, and delivery decisions. Add new entries at t
 
 ## 2026-11-13 — Keep vibration recovery evidence-linked and provisional
 
-- **DEC-009 — Model recovery as linked local records with evidence-gated closure.** The vibration scenario owns a six-stage workflow, action register, blockers, schedule forecast, REQ-VIB-042 record, R-04 baseline/residual assessment, decision authority, and closeout. Actions retain stage, WP, requirement, and risk identifiers. Stage progress and overall recovery status are derived from saved records.
+- **DEC-009 — Model recovery as linked local records with evidence-gated closure.** The vibration scenario owns a six-stage workflow, action register, linked dependency readiness, blockers, schedule forecast, REQ-VIB-042 record, R-04 baseline/residual assessment, decision authority, and closeout. Actions retain stage, WP, requirement, and risk identifiers; dependency readiness derives from its linked actions. Stage progress and overall recovery status are derived from saved records.
 - **Risk/exit rule:** R-04 P4×I5 remains the baseline; the scenario P2×I5 value remains provisional until REQ-VIB-042 passes with a retained test-record reference and reviewer acceptance. Recovery cannot close solely because six stages are checked off: documented root-cause disposition, evidenced actions, no release blockers, accepted residual risk, updated project controls, and closure approval are required.
 - **Consequences:** Use 20 Nov 2026 as the MS-03 baseline, derive current forecast/variance from the editable milestone, and label critical-path assessment as required because this demo does not model dependencies. Keep scenario data fictional and browser-local; do not invent a numeric vibration limit.
 
