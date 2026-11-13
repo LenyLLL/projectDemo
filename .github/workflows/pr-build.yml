@@ -24,14 +24,17 @@ jobs:
       - name: Diagnose npm workspace after setup-node
         working-directory: ${{ github.workspace }}
         run: |
-          printf 'GITHUB_WORKSPACE=%s\n' "$GITHUB_WORKSPACE"
-          printf 'PWD=%s\n' "$PWD"
+          printf 'GITHUB_WORKSPACE=%s\\n' "$GITHUB_WORKSPACE"
+          printf 'PWD=%s\\n' "$PWD"
           ls -l package.json package-lock.json
           npm config get package-lock
           node -e "const p=JSON.parse(require('fs').readFileSync('package-lock.json','utf8')); console.log('lockfileVersion='+p.lockfileVersion)"
       - name: Install from checked-in lockfile
         working-directory: ${{ github.workspace }}
         run: npm ci
+      - name: Focused recovery logic tests
+        working-directory: ${{ github.workspace }}
+        run: npm test
       - name: Build
         working-directory: ${{ github.workspace }}
         run: npm run build

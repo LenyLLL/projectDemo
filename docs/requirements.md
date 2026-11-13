@@ -28,9 +28,10 @@ The product goal is to give a TPM one concise operating view for delivery status
 4. **Risks & Issues:** probability/impact exposure, status, owner, mitigation, and a control to add a risk.
 5. **Change & Decision Log:** fictional change requests and decisions, approval-state editing, and a control to add a change request.
 6. **Project Reporting:** calculated indicators and a downloadable text status brief.
-7. **Scenario controls:** baseline, supplier-slip, and recovery snapshots; scenario reload and baseline reset, with a visible summary of each scenario's work-package, milestone, and risk impact.
-8. **Persistence:** save changes in the current browser using `localStorage`; no backend or account is required.
-9. **Portfolio framing:** clearly identify the project and its data as fictional throughout the dashboard and README.
+7. **Scenario controls:** baseline, supplier-slip, vibration-recovery, and supplier-recovery snapshots; scenario reload and baseline reset, with a visible summary of work-package, milestone, and risk impact.
+8. **Project controls:** read-only illustrative RACI matrix, consolidated RAID log, verification traceability matrix, and supplier readiness tracker; change and decision records show rationale and decision authority.
+9. **Persistence:** save editable changes in the current browser using `localStorage`; no backend or account is required.
+10. **Portfolio framing:** clearly identify the project and its data as fictional throughout the dashboard and README.
 
 ### Out of scope
 
@@ -47,8 +48,10 @@ The product goal is to give a TPM one concise operating view for delivery status
 | Work package | ID, title, workstream, owner, status, priority, due date, progress | Search; edit status/progress; add a package; derive completion and average progress |
 | Milestone | ID, name, date, owner, status | Edit date/status; show on the development plan |
 | Risk/issue | ID, title, category, owner, probability, impact, status, mitigation action | Edit probability, impact, and status; derive exposure score; add a risk |
-| Change/decision | ID, type, title, owner, date, status, impact | Edit governance status; add a change request |
-| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, or recovery state; reset to baseline |
+| Change/decision | ID, type, title, owner, date, status, impact, rationale, decision authority | Edit governance status; add a change request; supplier recovery adds a pending approval record |
+| Project controls | RACI, RAID, verification traceability, supplier readiness seed records | Read-only fictional examples with owners, next actions, targets, and evidence/exit criteria |
+| Scenario | Name plus snapshots of the four collections | Load baseline, supplier-slip, vibration-recovery, or supplier-recovery state; reset to baseline |
+| Vibration recovery | REC ID, R-04 reference, accountable owner, six ordered stages, linked action register, blockers, REQ-VIB-042 record, risk review, closeout decision | Visible only in the Vibration recovery plan scenario; editable records and derived progress/status persist in localStorage |
 
 All data is fictional and browser-local. A scenario load intentionally replaces the current browser state with that scenario's seed snapshot.
 
@@ -72,10 +75,10 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-04 — Work package tracker:** users can search packages, edit status and progress, add a package, and see progress/completion indicators recalculate.
 - **AC-05 — Risk controls:** users can add a risk and edit probability, impact, and status; active-risk counts exclude `Closed` and `Resolved` entries, and exposure indicators recalculate.
 - **AC-06 — Change control:** users can add a change request and edit change/decision status.
-- **AC-07 — Scenarios:** all three scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
+- **AC-07 — Scenarios:** all four scenarios can be loaded; the selected scenario label persists with the loaded data after reload; reset restores the fictional baseline and its label.
 - **AC-08 — Reporting:** users can download a status brief containing the loaded scenario and simulation date, current calculated health/schedule, confidence heuristic, completion, next milestone/date/status, and active risk counts.
 - **AC-09 — Local-first operation:** core controls work without a backend; task, milestone, risk, change, and selected scenario state persist in the current browser only.
-- **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run the GitHub Actions build check; GitHub Pages deploys from `main` only.
+- **AC-10 — Build and deployment:** pull requests targeting `main` or `develop` run focused tests and the GitHub Actions production build; GitHub Pages deploys from `main` only.
 - **AC-11 — Review governance:** each review gate remains pending until an independent written result is recorded in `docs/reviews/`.
 - **AC-12 — Feedback versus approval:** a PR comment, implementation completion, or successful build/deployment is not a gate approval; only the dated report for the exact reviewed SHA can approve a gate.
 - **AC-13 — Live navigation counts:** the work-package badge equals the current package count and the risk badge equals the active risk count in the loaded scenario.
@@ -83,7 +86,18 @@ All data is fictional and browser-local. A scenario load intentionally replaces 
 - **AC-15 — Readable interface:** dashboard text has a minimum rendered CSS font size of 12px, including compact labels and mobile navigation.
 - **AC-16 — Full milestone plan:** the Development Plan control expands a full milestone register with ID/name, owner, target date, status, planned outcome, and an exit check.
 - **AC-17 — Scenario clarity:** each selected scenario displays a concise, explicit explanation of its key work-package, milestone, and risk changes; Supplier slip names the one-week delay and recovery scenario states its assumptions.
+- **AC-18 — Project controls:** a Project controls navigation item opens accessible RACI, RAID, verification traceability, and supplier readiness views; sample entries are explicitly labeled fictional and include ownership plus action or evidence fields.
+- **AC-19 — Change traceability:** change and decision records display rationale and decision authority; the supplier recovery scenario includes a pending alternate-source change request with its illustrative cost and schedule impact.
+- **AC-20 — Scenario-specific recovery:** selecting Vibration recovery plan shows the six-stage vibration workflow and Recovery Tracking; Baseline, Supplier slip, and Supplier recovery do not show this panel, and the existing Supplier Recovery panel remains intact.
+- **AC-21 — Stage and action tracking:** each ordered stage exposes status, accountable owner, target date, and output/evidence. Progress and overall recovery status derive from persisted stage/action/evidence data; an action links its stage to a work package, requirement, and risk and records owner, due date, verification method, status, and evidence/notes. Dependency readiness derives from its linked actions.
+- **AC-22 — Recovery forecast:** show the fixed MS-03 baseline date (20 Nov 2026), current scenario forecast, calculated calendar-day variance, WP-04 target date (17 Nov 2026 in the seed), recovery-forecast disclaimer, and “Critical-path impact: assessment required” because no dependency network is modeled.
+- **AC-23 — Risk and verification integrity:** retain R-04 P4×I5 baseline separately from provisional P2×I5 residual. Residual risk cannot be accepted or closed until REQ-VIB-042 re-test status is Passed, a test-record reference exists, and the reviewer accepts the evidence. Do not invent a numerical vibration threshold.
+- **AC-24 — Root-cause integrity:** mounting/interface, motor/control tuning, encoder/feedback, and resonance/structural behavior are explicitly hypotheses until the user records a confirmed or formally dispositioned cause with rationale/evidence.
+- **AC-25 — Evidence-based recovery exit:** recovery cannot be Complete until root-cause disposition, evidenced corrective actions, accepted REQ-VIB-042 re-test, zero unresolved release-blocking anomalies, accepted residual risk, and updated forecast/RAID/status are recorded; all six stages and a recorded closure approval are also required. Show decision authority and open decision.
+- **AC-26 — Local recovery records:** all recovery state is browser-local and survives refresh for the selected scenario; scenario loading and reset retain their documented snapshot behavior. No backend is added.
+- **AC-27 — Recovery verification:** focused automated tests cover derived stage progress/status, stage-only completion guard, residual-risk evidence gate, closure approval gate, and baseline/forecast variance; a manual checklist covers scenario switching, local persistence, reset, and linked traceability.
 
 ## 7. Current status
 
-The frontend MVP and the PR #3 CI repair are integrated on `develop`; formal review gates remain pending. The score heuristic, fixed simulation date, illustrative Gantt bars and budget context, and limited editability of names, owners, and impact descriptions are known prototype limits. Scenario-derived status, milestone, risk, reporting, persistence, and completion behavior is covered by AC-02, AC-03, AC-05, AC-07, AC-08, and AC-13–AC-14; see `docs/development/sprint-log.md` and the current review request.
+The frontend MVP and earlier project-control features are present in the reviewed portfolio baseline; formal review gates remain pending. The vibration recovery workflow is a local-first scenario simulation. Its dates, people, risk ratings, stage outputs, and evidence references are fictional until edited; the seed re-test is pending and the residual risk is provisional. The score heuristic, fixed simulation date, illustrative Gantt bars and budget context, and limited editability of names, owners, and impact descriptions remain prototype limits. See `docs/development/sprint-log.md`, `docs/testing/vibration-recovery-checklist.md`, and the current review request.
+
