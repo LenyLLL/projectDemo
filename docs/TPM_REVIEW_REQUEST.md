@@ -43,9 +43,9 @@ Update this section for each review; keep historical records below it.
 
 - **PR / branch:** [PR #12](https://github.com/LenyLLL/projectDemo/pull/12), `feature/vibration-recovery-workflow` → `develop`.
 - **Review source:** [Issue #11](https://github.com/LenyLLL/projectDemo/issues/11), review of `main` at `d06539569797686927749b04ac2101ecd64db74a`.
-- **Exact source revision:** current PR `head.sha` is authoritative; any later commit requires refreshed exact-head build and test results.
+- **Implementation source revision:** `e538ad8d92be74388de1d66b7325a334398305d8` (recovery UI, model, tests, and workflow update). Current PR `head.sha` is authoritative for review; any later commit requires refreshed exact-head build and test results.
 - **Scope changed:** implemented the complete six-stage workflow, linked tracking data, schedule comparison, verification traceability, risk evidence gate, six exit criteria, and local persistence. Supplier Recovery and Project Controls remain available.
-- **Validation:** focused `npm test` and `npm run build` results are recorded in the PR description; GitHub Actions must pass on the exact current PR head before integration.
+- **Validation:** local `npm test` passed 5/5 and `npm run build` passed. GitHub Actions run [43421221350](https://github.com/LenyLLL/projectDemo/actions/runs/43421221350) was still in progress on implementation source `e538ad8d92be74388de1d66b7325a334398305d8` at handoff preparation; the final PR head must pass both exact-head CI steps before integration.
 - **Known limitations:** all content is fictional; no backend or dependency/critical-path model is added. Critical-path impact remains “assessment required”; vibration threshold remains controlled by approved REQ-VIB-042.
 - **Gate status:** Architecture Review, MVP Review, Functional & Scenario Review, and Final Interview Review remain pending dated independent reports. This issue, implementation, and CI do not approve a gate.
 
