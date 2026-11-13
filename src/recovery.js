@@ -16,6 +16,9 @@ export const vibrationRecoverySeed = {
     { id: 'RA-01', stageId: 'correct', title: 'Run controlled isolation-mount A/B correction', owner: 'Luca Romano', workPackageId: 'WP-04', requirementId: 'REQ-VIB-042', riskId: 'R-04', verificationMethod: 'Isolation-mount A/B bench test against the approved vibration requirement', dueDate: '2026-11-16', status: 'In progress', evidence: '' },
     { id: 'RA-02', stageId: 'correct', title: 'Check encoder feedback and capture configuration baseline', owner: 'Priya Nair', workPackageId: 'WP-03', requirementId: 'REQ-VIB-042', riskId: 'R-04', verificationMethod: 'Compare baseline and corrected encoder/control configuration during the REQ-VIB-042 bench test', dueDate: '2026-11-15', status: 'Not started', evidence: '' }
   ],
+  dependencies: [
+    { id: 'DEP-REC-01', title: 'Corrective work and encoder baseline must be ready before REQ-VIB-042 re-test', actionIds: ['RA-01', 'RA-02'], owner: 'Validation Lead', targetDate: '2026-11-16' }
+  ],
   verification: { requirementId: 'REQ-VIB-042', method: 'Isolation-mount A/B bench test', status: 'Pending', testRecord: '', reviewerAccepted: false },
   blockers: [{ id: 'BL-01', title: 'Root-cause evidence and vibration re-test are pending', owner: 'Luca Romano', status: 'Open' }],
   riskReview: { accepted: false, decisionRole: 'Program Manager', rationale: '' },
