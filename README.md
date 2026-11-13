@@ -14,7 +14,7 @@ An interactive **portfolio simulation** of a robotics development project contro
 - **Project Controls** — illustrative RACI matrix, consolidated RAID log, verification traceability matrix, and supplier readiness tracker.
 - **Project Reporting** — current scenario summary and a status brief action.
 - **Scenario controls** — compare the baseline, supplier slip, vibration recovery, and supplier recovery scenarios with visible work-package, milestone, and risk impacts; reset to the original baseline at any time.
-- **Vibration Recovery workflow** — when selected, track six recovery stages, linked actions, blockers, schedule variance, REQ-VIB-042 test evidence, provisional residual risk, and evidence-based exit approval. The Supplier Recovery panel remains available in its own scenario.
+- **Vibration Recovery workflow** — when selected, track six recovery stages, linked actions and dependencies, blockers, schedule variance, REQ-VIB-042 test evidence, provisional residual risk, and evidence-based exit approval. The Supplier Recovery panel remains available in its own scenario.
 
 Edits are saved in the browser with `localStorage`; no backend or account is needed. Use **Reset demo** to restore the fictional baseline on the current browser.
 
