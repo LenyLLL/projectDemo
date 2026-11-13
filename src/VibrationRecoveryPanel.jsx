@@ -63,6 +63,7 @@ export default function VibrationRecoveryPanel({ recovery, metrics, tasks, miles
         <label>Linked risk<select value={action.riskId} onChange={event => onAction(action.id, { riskId: event.target.value })}>{risks.map(item => <option key={item.id} value={item.id}>{item.id} · {item.title}</option>)}</select></label>
         <label>Due date<input type="date" value={action.dueDate} onChange={event => onAction(action.id, { dueDate: event.target.value })}/></label>
         <label>Status<select value={action.status} onChange={event => onAction(action.id, { status: event.target.value })}><option>Not started</option><option>In progress</option><option>Blocked</option><option>Completed</option></select></label>
+        <label className="action-evidence">Verification method<input value={action.verificationMethod} onChange={event => onAction(action.id, { verificationMethod: event.target.value })}/></label>
         <label className="action-evidence">Evidence / notes<textarea rows="2" value={action.evidence} onChange={event => onAction(action.id, { evidence: event.target.value })} placeholder="Required to complete this action"/></label>
         <div className="action-trace"><Link2 size={13}/><span>{workPackage(action.workPackageId)?.title || 'Work package missing'} → {action.requirementId} → {action.riskId}</span></div>
       </article>)}</div>
